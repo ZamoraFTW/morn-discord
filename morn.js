@@ -14,7 +14,7 @@ client.on('message', message => {
     	message.reply('pong');
   	}
 	if (message.content === '!comandos') {
-    	message.reply(lista);
+    	message.send(lista);
   	}
 });
 
