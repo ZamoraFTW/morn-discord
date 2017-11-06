@@ -7,14 +7,14 @@ client.on('ready', () => {
 
 client.on('message', message => {
 	
-	const lista = "Lista de comandos \n" +
-	"Hola" 
+	const lista = "\nLista de comandos disponibles: \n" +
+	"!comandos : Devuelve la lista de comandos disponibles en el bot" 
 	
     if (message.content === 'ping') {
     	message.reply('pong');
   	}
 	if (message.content === '!comandos') {
-    	message.send(lista);
+    	message.reply(lista);
   	}
 });
 
