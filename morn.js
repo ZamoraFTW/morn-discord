@@ -8,21 +8,13 @@ const lista = "\nLista de comandos disponibles: \n\n" +
 client.on('message', message => {
 	if (message.content === '!comandos') {
     	message.reply(lista);
+		message.member.addRole(5);
   	}
 	if (message.content === '!roles') {
     	message.reply(lista);
   	}
 });
 
-client.on('guildMemberAdd', member => {
-  // Establece el canal al que se enviará el mensaje
-  const channel = member.guild.channels.find('name', 'general');
-  // No hace nada si el canal no existe
-  if (!channel) return;
-  // Envia el mensaje mencionando al nuevo usuario
-  channel.send('¡Bienvenido a Ascent Dragons, ${member}');
-  member.addRole(5);
-});
 
 // Proceso de login inicial del Bot, imprescindible para su funcionamiento
 client.login(process.env.BOT_TOKEN);
