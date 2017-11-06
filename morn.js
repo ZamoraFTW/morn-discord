@@ -6,8 +6,15 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
+	
+	const lista = "Lista de comandos \n" +
+	"Hola" 
+	
     if (message.content === 'ping') {
     	message.reply('pong');
+  	}
+	if (message.content === '!comandos') {
+    	message.reply(lista);
   	}
 });
 
