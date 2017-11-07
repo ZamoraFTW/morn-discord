@@ -28,7 +28,7 @@ client.on('message', message => {
 
 var stream = tw.stream('statuses/filter', {track: '@BungieHelp'});
 stream.on('data', function(event) {
-	txtAdministracion.send(event.text)
+	client.send(txtAdministracion,event.text)
 	.then(message => console.log(`Mensaje enviado: ${message.content}`))
 	.catch(console.error);
 });
