@@ -27,7 +27,7 @@ client.on('message', message => {
     	message.reply(lista);
 	}
 	if (message.content === '!esteCanal') {
-		message.reply(message.guild.id);
+		message.reply(message.channel.id);
 	}
 	if (message.content.startsWith('!play')) {
 		const voiceChannel = message.member.voiceChannel;
