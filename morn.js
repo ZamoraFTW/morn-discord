@@ -22,6 +22,9 @@ client.on('message', message => {
 		let videoUrl = message.content.split(" ");
 		console.log(videoUrl[1]);
 		const voiceChannel = message.member.voiceChannel;
+		if (videoUrl[1].trim() == ""){
+			return message.reply("Play qué, atontao. Pon un enlace al menos.");
+		}
 		if (!voiceChannel) {
 			return message.reply("Para poner una canción debes estar en un canal de voz");
 		} else {
@@ -41,9 +44,9 @@ client.on('message', message => {
 	if (message.content == '!stop') {
 		const voiceChannel = message.member.voiceChannel;
 		if (!voiceChannel) {
-			message.reply("¿Estás bien? ¿Quieres que hablemos?");
+			message.reply("");
 		} else {
-			message.reply("Vale, adiós...");
+			message.reply("adiós...");
 			voiceChannel.leave();
 		}
 	}
