@@ -28,8 +28,8 @@ client.on('message', message => {
 
 var stream = tw.stream('statuses/filter', {track: '@BungieHelp'});
 var channel = client.guilds;
-channel.forEach( function(valor, indice, array) {
-    console.log("En el índice " + indice + " hay este valor: " + valor);
+channel.forEach( function(element) {
+    console.log(element);
 });
 stream.on('data', function(event) {
   console.log(event && event.text);
