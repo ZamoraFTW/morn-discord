@@ -46,7 +46,7 @@ client.on('message', message => {
 
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
-		client.channels.get(txtAdministracion).send('Hola');
+		client.channels.get(txtAdministracion).send(event.text);
 	});
    
 	stream.on('error', function(error) {
@@ -54,5 +54,5 @@ tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	});
 });
 
-// Proceso de login inicial del Bot, imprescindible para su funcionamiento
+// Proceso de login inicial del Bot, imprescindible para su funcionamiento AL FINAL DEL FICHERO
 client.login(process.env.BOT_TOKEN);
