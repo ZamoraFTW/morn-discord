@@ -55,15 +55,15 @@ client.on('message', message => {
 		}
 	}
 	if (message.content == '!engramas') {
-		request('url', function (err, res, body) {});
-		request({
+		ajax('url', function (err, res, body) {});
+		ajax({
 			url: 'https://api.vendorengrams.xyz/getVendorStats',
 			method: 'GET',
 			data: {
 				key: 'b93851b99ee05d18fbaa5380a0896217'
 			}
 		}, function (err, res, body) {
-
+			console.log(res);
 		});
 	}
 });
