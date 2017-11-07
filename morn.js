@@ -7,7 +7,7 @@ const client = new Discord.Client();
 const lista = "\nLista de comandos disponibles: \n\n" +
 	"!comandos : Devuelve la lista de comandos disponibles en el bot" 
 // Canal de texto de administracion
-const txtAdministracion = process.env.ID_AMINISTRACION;
+const txtAdministracion = process.env.ID_ADMINISTRACION;
 // ID del servidor
 const idServer = process.env.ID_SERVER;
 
@@ -42,7 +42,7 @@ client.on('message', message => {
 		  });
 	}
 });
-console.log(txtAdministracion);
+console.log(client.channels.get(txtAdministracion))
 /*
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
