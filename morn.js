@@ -57,7 +57,7 @@ client.on('message', message => {
 	if (message.content == '!engramas') {
 		request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
 			var myArr = JSON.parse(body);
-			var misVendedores = "Lista de poder de luz de los distintos drops que hay en el juego. Recordad que no son datos 100% fiables y si no están verificados menos aún. +
+			var misVendedores = "Lista de poder de luz de los distintos drops que hay en el juego. Recordad que no son datos 100% fiables y si no están verificados menos aún." +
 				"\nTodos los drops son valorados por cuentas de 305 de luz.\n"
 			myArr.forEach(function (element) {
 				switch (element.vendor) {
