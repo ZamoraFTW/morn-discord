@@ -49,17 +49,7 @@ streamOfTweets.on('readable', function() {
   var time, tweet;
   tweet = streamOfTweets.read();
   time = new Date(tweet.time * 1000);
-  console.log([
-    "slang800's tweet from ",
-    time.toLocaleDateString(),
-    " got ",
-    tweet.favorite,
-    " favorites, ",
-    tweet.reply,
-    " replies, and ",
-    tweet.retweet,
-    " retweets"
-  ].join(''));
+  console.log(tweet)
 });
 
 // Proceso de login inicial del Bot, imprescindible para su funcionamiento AL FINAL DEL FICHERO
