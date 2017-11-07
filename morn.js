@@ -44,7 +44,7 @@ client.on('message', message => {
 });
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
-		client.channels.find('id',txtAdministracion).send('Tweet de Bungie detectado');
+		client.channels.get(txtAdministracion).sendMessage('Tweet de Bungie detectado');
 	});
    
 	stream.on('error', function(error) {
