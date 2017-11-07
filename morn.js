@@ -19,7 +19,9 @@ client.on('message', message => {
 		message.reply(message.channel.id);
 	}
 	if (message.content.startsWith('!play')) {
-		const voiceChannel = message.member.voiceChannel;
+		let videoUrl = message.content.split(" ");
+		console.log(videoUrl[1]);
+		/*const voiceChannel = message.member.voiceChannel;
 		if (!voiceChannel) return message.reply("Para poner un vídeo debes estar en un canal de voz");
 			voiceChannel.join()
 		  	.then(connnection => {
@@ -27,6 +29,7 @@ client.on('message', message => {
 			const dispatcher = connnection.playStream(stream);
 			dispatcher.on('end', () => voiceChannel.leave());
 		  });
+		  */
 	}
 });
 let videoID = "http://www.youtube.com/watch?v=A02s8omM_hI"
