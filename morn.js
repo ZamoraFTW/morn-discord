@@ -29,8 +29,8 @@ client.on('message', message => {
 		message.reply(message.guild.id);
   	}
 });
-var servidor = client.guilds.get(idServer);
-console.log(servidor);
+var servidor = client.guilds;
+console.log(Array.from(servidor.values()));
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
 	});
