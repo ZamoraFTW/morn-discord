@@ -8,8 +8,7 @@ const lista = "\nLista de comandos disponibles: \n\n" +
 client.on('message', message => {
 	if (message.content === '!comandos') {
     	message.reply(lista);
-		message.member.addRole(5);
-  	}
+	}
 	if (message.content === '!roles') {
     	message.reply(lista);
   	}
