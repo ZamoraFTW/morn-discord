@@ -55,7 +55,6 @@ client.on('message', message => {
 		}
 	}
 	if (message.content == '!engramas') {
-		ajax('url', function (err, res, body) {});
 		ajax({
 			url: 'https://api.vendorengrams.xyz/getVendorStats',
 			method: 'GET',
@@ -63,7 +62,7 @@ client.on('message', message => {
 				key: 'b93851b99ee05d18fbaa5380a0896217'
 			}
 		}, function (err, res, body) {
-			console.log(res);
+			console.log(err);
 		});
 	}
 });
