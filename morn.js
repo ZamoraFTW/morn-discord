@@ -42,12 +42,15 @@ client.on('message', message => {
 		  });
 	}
 });
+console.log(client.channels.get(txtAdministracion));
+/*
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
-		client.channels.get(txtAdministracion).sendMessage('Tweet de Bungie detectado');
+		
 	});
    
 	stream.on('error', function(error) {
         throw error;
 	});
-  });
+});
+*/
