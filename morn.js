@@ -58,7 +58,7 @@ client.on('message', message => {
 		request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
 			var myArr = JSON.parse(body);
 			var misVendedores = "";
-			myArr.array.forEach(function (element) {
+			myArr.forEach(function (element) {
 				switch (element.vendor) {
 					case 0:
 					misVendedores = "Devrim Kay -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified);
