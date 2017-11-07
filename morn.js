@@ -139,7 +139,7 @@ function analizaEngrama(estado) {
 	} else if (estado == 3) {
 		return "**300.**"
 	} else {
-		return "Se necesitan mas datos para analizar este drop."
+		return "**Se necesitan mas datos para analizar este drop.**"
 	}
 }
 
