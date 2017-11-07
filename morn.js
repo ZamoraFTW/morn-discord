@@ -56,7 +56,7 @@ client.on('message', message => {
 	}
 	if (message.content == '!engramas') {
 		request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
-			console.log('statusCode:', response); // Print the response status code if a response was received
+			var myArr = JSON.parse(body);
 		  });
 	}
 });
