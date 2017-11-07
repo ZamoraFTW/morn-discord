@@ -30,7 +30,7 @@ client.on('message', message => {
 		  });
 	}
 });
-
+let videoID = "http://www.youtube.com/watch?v=A02s8omM_hI"
 ytdl.getInfo(videoID, (err, info) => {
 	if (err) throw err;
 	var audioFormats = ytdl.filterFormats(info.formats, 'audioonly');
