@@ -30,7 +30,10 @@ client.on('message', message => {
   	}
 });
 var servidor = client.guilds;
-console.log(Array.from(servidor.values()));
+var array = Array.from(servidor.values());
+array.forEach(function(element) {
+    console.log(element);
+});
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
 	});
