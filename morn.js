@@ -5,8 +5,10 @@ const client = new Discord.Client();
 //Constante con la lista de comandos disponibles, modificar simpre que se añada o se borre un comando. Separarlos con \n
 const lista = "\nLista de comandos disponibles: \n\n" +
 	"!comandos : Devuelve la lista de comandos disponibles en el bot" 
-// Canal de texte de administracion
+// Canal de texto de administracion
 const txtAdministracion = process.env.ID_AMINISTRACION;
+// ID del servidor
+const idServer = process.env.ID_SERVER;
 // Variable para la conexion con la API de Twitter 	
 var tw = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -22,7 +24,7 @@ client.on('message', message => {
     	message.reply(lista);
 	}
 	if (message.content === '!esteCanal') {
-		message.reply(message.channel.id);
+		message.reply(message.guild.id);
   	}
 });
 var canalAdmin = client.channels.get(txtAdministracion);
