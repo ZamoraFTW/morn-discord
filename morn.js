@@ -27,7 +27,7 @@ client.on('message', message => {
 });
 
 var stream = tw.stream('statuses/filter', {track: '@BungieHelp'});
-var channel = client.guilds.first;
+var channel = client.guilds.find("name", "Ascent Dragons");
 console.log(channel);
 stream.on('data', function(event) {
   console.log(event && event.text);
