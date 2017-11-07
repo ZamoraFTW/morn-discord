@@ -41,15 +41,14 @@ client.on('message', message => {
 });
 
 const streamOfTweets = new TwitterPosts({
-  username: 'BungieHelp',
+  username: 'ZamoraFTW',
   retweets: false
 });
  
 streamOfTweets.on('readable', function() {
   var time, tweet;
   tweet = streamOfTweets.read();
-  time = new Date(tweet.time * 1000);
-  console.log(tweet)
+  console.log(tweet.text)
 });
 
 // Proceso de login inicial del Bot, imprescindible para su funcionamiento AL FINAL DEL FICHERO
