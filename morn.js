@@ -131,9 +131,9 @@ function verificado(numero) {
 
 function analizaEngrama(estado) {
 	if (estado == 0) {
-		return "295."
+		return "**295.**"
 	} else if (estado == 1) {
-		return "296-299."
+		return "**296-299.**"
 	} else if (estado == 2) {
 		return "Posible 300. "
 	} else if (estado == 3) {
