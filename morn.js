@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
 const Twitter = require('twitter');
+const client = new Discord.Client();
+
 //Constante con la lista de comandos disponibles, modificar simpre que se añada o se borre un comando. Separarlos con \n
 const lista = "\nLista de comandos disponibles: \n\n" +
 	"!comandos : Devuelve la lista de comandos disponibles en el bot" 
@@ -22,9 +23,7 @@ client.on('message', message => {
 	}
 	if (message.content === '!tweets') {
     	tw.get('search/tweets', {q: 'node.js'}, function(error, tweets, response) {
-			tweets.forEach(function(element) {
-				console.log(element.text);
-			});
+			console.log(response);
 		});
   	}
 });
