@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const Twitter = require('twitter');
 const ytdl = require('ytdl-core');
 const client = new Discord.Client();
-
+const TwitterPosts = require('twitter-screen-scrape');
 //Constante con la lista de comandos disponibles, modificar simpre que se añada o se borre un comando. Separarlos con \n
 const lista = "\nLista de comandos disponibles: \n\n" +
 	"!comandos : Devuelve la lista de comandos disponibles en el bot" 
@@ -18,8 +18,6 @@ var tw = new Twitter({
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
-
-
 	
 client.on('message', message => {
 	if (message.content === '!comandos') {
@@ -27,7 +25,6 @@ client.on('message', message => {
 	}
 	if (message.content === '!esteCanal') {
 		message.reply(message.channel.id);
-		client.channels.get(message.channel.id).send("Hi");
 	}
 	if (message.content.startsWith('!play')) {
 		const voiceChannel = message.member.voiceChannel;
@@ -42,17 +39,27 @@ client.on('message', message => {
 		  });
 	}
 });
-//client.channels.get(txtAdministracion).send('Hola');
 
-tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
-	stream.on('data', function(event) {
-		//client.channels.get(txtAdministracion).send(event.text);
-		console.log(event);
-	});
-   
-	stream.on('error', function(error) {
-        throw error;
-	});
+const streamOfTweets = new TwitterPosts({
+  username: 'BungieHelp',
+  retweets: false
+});
+ 
+streamOfTweets.on('readable', function() {
+  var time, tweet;
+  tweet = streamOfTweets.read();
+  time = new Date(tweet.time * 1000);
+  console.log([
+    "slang800's tweet from ",
+    time.toLocaleDateString(),
+    " got ",
+    tweet.favorite,
+    " favorites, ",
+    tweet.reply,
+    " replies, and ",
+    tweet.retweet,
+    " retweets"
+  ].join(''));
 });
 
 // Proceso de login inicial del Bot, imprescindible para su funcionamiento AL FINAL DEL FICHERO

@@ -12,6 +12,7 @@
     "ffmpeg": "0.0.4",
     "request": "2.81.0",
     "twitter": "^1.7.1",
+    "twitter-screen-scrape": "^1.0.2",
     "ytdl-core": "^0.18.1"
   }
 }
