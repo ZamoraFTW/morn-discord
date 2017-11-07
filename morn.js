@@ -26,7 +26,7 @@ client.on('message', message => {
   	}
 });
 var canalAdmin = client.channels.get(txtAdministracion);
-client.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
+tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
 	  console.log(event && event.text);
 	});
