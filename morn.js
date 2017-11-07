@@ -21,14 +21,13 @@ client.on('message', message => {
 	if (message.content === '!comandos') {
     	message.reply(lista);
 	}
-	if (message.content === '!tweets') {
-
+	if (message.content === '!esteCanal') {
+		message.reply(message.channel);
   	}
 });
 
 var stream = tw.stream('statuses/filter', {track: '@BungieHelp'});
-var channel = client.guilds.find("name", "Ascent Dragons");
-console.log(channel);
+//var channel = client.guilds.find("name", "Ascent Dragons");
 stream.on('data', function(event) {
   console.log(event && event.text);
 });
