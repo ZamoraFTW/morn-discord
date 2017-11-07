@@ -22,9 +22,11 @@ client.on('message', message => {
     	message.reply(lista);
 	}
 	if (message.content === '!tweets') {
-    	tw.get('search/tweets', {q: 'node.js'}, function(error, tweets, response) {
-			console.log(response);
-		});
+
   	}
 });
 
+var stream = tw.stream('statuses/filter', {track: 'javascript'});
+stream.on('data', function(event) {
+  console.log(event && event.text);
+});
