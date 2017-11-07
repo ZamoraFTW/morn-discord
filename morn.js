@@ -57,38 +57,89 @@ client.on('message', message => {
 	if (message.content == '!engramas') {
 		request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
 			var myArr = JSON.parse(body);
-			var misVendedores = "";
+			var misVendedores = "Lista de poder de luz de los distintos drops que hay en el juego. Recordad que no son datos 100% fiables y si no están verificados menos aún. +
+				"\nTodos los drops son valorados por cuentas de 305 de luz.\n"
 			myArr.forEach(function (element) {
 				switch (element.vendor) {
 					case 0:
-					misVendedores = "Devrim Kay -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified);
+						misVendedores += "Devrim Kay -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 1:
+						misVendedores += "Miniherramienta MIDA -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 2:
+						misVendedores += "Sloane -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 3:
+						misVendedores += "Failsafe -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 4:
+						misVendedores += "Asher Mir -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 5:
+						misVendedores += "Man 'O War -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 7:
+						misVendedores += "Drang -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 8:
+						misVendedores += "Zavala -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 9:
+						misVendedores += "Shaxx -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 10:
+						misVendedores += "Banshee-44 -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 11:
+						misVendedores += "Ikora -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 12:
+						misVendedores += "Benedicto 99-40 -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 13:
+						misVendedores += "Guerra Futura -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 14:
+						misVendedores += "Nueva Monarquía -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 15:
+						misVendedores += "Órbita Muerta -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 16:
+						misVendedores += "Los Nueve -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						break;
+					case 17:
+						misVendedores += "Saladino -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
 						break;
 				}
 			}, this);
-			message.reply(misVendedores);
+			misVendedores += "*Posible 300 quiere decir que aún no lo ha confirmado suficiente gente como para 'asegurar' que sea 300. Para que lo sea debe poner que está verificado.\n" +
+				"*Los datos de la página actualmente pertenecen a PS4 y Xbox One, aún no está confirmado que vayan acordes con los de PC*"
+			message.member.channel.send(misVendedores);
 		});
 	}
 });
 
 function verificado(numero) {
 	if (numero == 0) {
-		return "SI"
-	} else {
 		return "NO"
+	} else {
+		return "SI"
 	}
 }
 
 function analizaEngrama(estado) {
 	if (estado == 0) {
-		return "Engramas de 295."
+		return "295."
 	} else if (estado == 1) {
-		return "Engramas de 296-299."
+		return "296-299."
 	} else if (estado == 2) {
-		return "Posibles engramas de 300."
+		return "Posible 300. "
 	} else if (estado == 3) {
-		return "Engramas de 300."
+		return "300."
 	} else {
-		return "Se necesitan mas datos para analizar este vendedor."		
+		return "Se necesitan mas datos para analizar este drop."
 	}
 }
 
