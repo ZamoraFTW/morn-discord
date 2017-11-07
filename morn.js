@@ -57,10 +57,40 @@ client.on('message', message => {
 	if (message.content == '!engramas') {
 		request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
 			var myArr = JSON.parse(body);
-			console.log(myArr);
-		  });
+			var misVendedores = "";
+			myArr.array.forEach(function (element) {
+				switch (element.vendor) {
+					case 0:
+					misVendedores = "Devrim Kay -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified);
+						break;
+				}
+			}, this);
+			message.reply(misVendedores);
+		});
 	}
 });
+
+function verificado(numero) {
+	if (numero == 0) {
+		return "SI"
+	} else {
+		return "NO"
+	}
+}
+
+function analizaEngrama(estado) {
+	if (estado == 0) {
+		return "Engramas de 295."
+	} else if (estado == 1) {
+		return "Engramas de 296-299."
+	} else if (estado == 2) {
+		return "Posibles engramas de 300."
+	} else if (estado == 3) {
+		return "Engramas de 300."
+	} else {
+		return "Se necesitan mas datos para analizar este vendedor."		
+	}
+}
 
 // Proceso de login inicial del Bot, imprescindible para su funcionamiento AL FINAL DEL FICHERO
 client.login(process.env.BOT_TOKEN);
