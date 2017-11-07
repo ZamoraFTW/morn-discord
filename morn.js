@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 const fs = require('fs');
 const client = new Discord.Client();
-const ajax = require('ajax-request');
+const request = require('request');
 //Constante con la lista de comandos disponibles, modificar simpre que se añada o se borre un comando. Separarlos con \n
 const lista = "\nLista de comandos disponibles: \n\n" +
 	"!comandos : Devuelve la lista de comandos disponibles en el bot.\n" +
@@ -55,15 +55,11 @@ client.on('message', message => {
 		}
 	}
 	if (message.content == '!engramas') {
-		ajax({
-			url: 'https://api.vendorengrams.xyz/getVendorDrops',
-			method: 'GET',
-			data: {
-				key: 'b93851b99ee05d18fbaa5380a0896217'
-			}
-		}, function (err, res, body) {
-			console.log(res.data);
-		});
+		request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
+			console.log('error:', error); // Print the error if one occurred
+			console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+			console.log('body:', body); // Print the HTML for the Google homepage.
+		  });
 	}
 });
 
