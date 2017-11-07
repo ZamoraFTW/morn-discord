@@ -25,7 +25,7 @@ client.on('message', message => {
 			if (tweets == undefined) {
 				message.reply("No hay tweets");
 			} else {
-				console.log(tweets);
+				console.log(tweets.text);
 			}
 			
 		});
