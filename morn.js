@@ -28,9 +28,9 @@ client.on('message', message => {
 
 var stream = tw.stream('statuses/filter', {track: '@BungieHelp'});
 var channel = client.guilds;
-channel.forEach( function(element) {
-    console.log(element);
-});
+for (var k in channel) {
+	console.log(k)
+}
 stream.on('data', function(event) {
   console.log(event && event.text);
 });
