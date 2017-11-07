@@ -42,7 +42,7 @@ client.on('message', message => {
 		  });
 	}
 });
-console.log(client.channels.get(txtAdministracion))
+console.log(txtAdministracion);
 /*
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
