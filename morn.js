@@ -26,7 +26,7 @@ client.on('message', message => {
   	}
 });
 
-var stream = tw.stream('statuses/filter', {track: 'javascript'});
+var stream = tw.stream('statuses/filter', {track: '@BungieHelp'});
 stream.on('data', function(event) {
   console.log(event && event.text);
 });
