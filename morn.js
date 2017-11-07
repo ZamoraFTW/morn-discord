@@ -56,7 +56,7 @@ client.on('message', message => {
 	}
 	if (message.content == '!engramas') {
 		ajax({
-			url: 'https://api.vendorengrams.xyz/getVendorStats',
+			url: 'https://api.vendorengrams.xyz/getVendorDrops',
 			method: 'GET',
 			data: {
 				key: 'b93851b99ee05d18fbaa5380a0896217'
