@@ -57,8 +57,8 @@ client.on('message', message => {
 	if (message.content == '!engramas') {
 		request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
 			var myArr = JSON.parse(body);
-			var misVendedores = "Lista de poder de luz de los distintos drops que hay en el juego. Recordad que no son datos 100% fiables y si no están verificados menos aún." +
-				"\nTodos los drops son valorados por cuentas de 305 de luz.\n"
+			var misVendedores = "Lista de poder de luz de los distintos drops que hay en el juego.\n Recordad que no son datos 100% fiables y si no están verificados menos aún." +
+				" Todos los drops son valorados por cuentas de 305 de luz.\n"
 			myArr.forEach(function (element) {
 				switch (element.vendor) {
 					case 0:
@@ -114,8 +114,8 @@ client.on('message', message => {
 						break;
 				}
 			}, this);
-			misVendedores += "*Posible 300 quiere decir que aún no lo ha confirmado suficiente gente como para 'asegurar' que sea 300. Para que lo sea debe poner que está verificado.\n" +
-				"*Los datos de la página actualmente pertenecen a PS4 y Xbox One, aún no está confirmado que vayan acordes con los de PC*"
+			misVendedores += "\n*Posible 300 quiere decir que aún no lo ha confirmado suficiente gente como para 'asegurar' que sea 300. Para que lo sea debe poner que está verificado.\n" +
+				"*Los datos de la página actualmente pertenecen a PS4 y Xbox One, aún no está confirmado que vayan acordes con los de PC." + "\nEstos datos cambian cada 30 minutos."
 			message.member.channel.send(misVendedores);
 		});
 	}
