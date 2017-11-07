@@ -57,65 +57,65 @@ client.on('message', message => {
 	if (message.content == '!engramas') {
 		request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
 			var myArr = JSON.parse(body);
-			var misVendedores = "Lista de poder de luz de los distintos drops que hay en el juego.\n Recordad que no son datos 100% fiables y si no están verificados menos aún." +
-				" Todos los drops son valorados por cuentas de 305 de luz.\n"
+			var misVendedores = "Lista de poder de luz de los distintos drops que hay en el juego.\nRecordad que no son datos 100% fiables y si no están verificados menos aún." +
+				" Todos los drops son valorados por cuentas de 305 de luz.\n\n"
 			myArr.forEach(function (element) {
 				switch (element.vendor) {
 					case 0:
-						misVendedores += "Devrim Kay -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Devrim Kay   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 1:
-						misVendedores += "Miniherramienta MIDA -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Miniherramienta MIDA   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 2:
-						misVendedores += "Sloane -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Sloane   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 3:
-						misVendedores += "Failsafe -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Failsafe   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 4:
-						misVendedores += "Asher Mir -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Asher Mir   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 5:
-						misVendedores += "Man 'O War -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Man 'O War   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 7:
-						misVendedores += "Drang -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Drang   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 8:
-						misVendedores += "Zavala -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Zavala   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 9:
-						misVendedores += "Shaxx -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Shaxx   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 10:
-						misVendedores += "Banshee-44 -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Banshee-44   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 11:
-						misVendedores += "Ikora -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Ikora   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 12:
-						misVendedores += "Benedicto 99-40 -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Benedicto 99-40   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 13:
-						misVendedores += "Guerra Futura -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Guerra Futura   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 14:
-						misVendedores += "Nueva Monarquía -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Nueva Monarquía   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 15:
-						misVendedores += "Órbita Muerta -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Órbita Muerta   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 16:
-						misVendedores += "Los Nueve -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Los Nueve   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 					case 17:
-						misVendedores += "Saladino -> " + analizaEngrama(element.type) + " Verificado -> " + verificado(element.verified) + "\n";
+						misVendedores += "Saladino   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						break;
 				}
 			}, this);
 			misVendedores += "\n*Posible 300 quiere decir que aún no lo ha confirmado suficiente gente como para 'asegurar' que sea 300. Para que lo sea debe poner que está verificado.\n" +
-				"*Los datos de la página actualmente pertenecen a PS4 y Xbox One, aún no está confirmado que vayan acordes con los de PC." + "\nEstos datos cambian cada 30 minutos."
+				"*Los datos de la página actualmente pertenecen a PS4 y Xbox One, aún no está confirmado que vayan acordes con los de PC." + "\n\nEstos datos cambian cada 30 minutos."
 			message.channel.send(misVendedores);
 		});
 	}
@@ -131,9 +131,9 @@ function verificado(numero) {
 
 function analizaEngrama(estado) {
 	if (estado == 0) {
-		return "295."
+		return "<b>295.</b>"
 	} else if (estado == 1) {
-		return "296-299."
+		return "<b>296-299.</b>"
 	} else if (estado == 2) {
 		return "Posible 300. "
 	} else if (estado == 3) {
