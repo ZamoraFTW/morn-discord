@@ -28,6 +28,7 @@ client.on('message', message => {
 	}
 	if (message.content === '!esteCanal') {
 		message.reply(message.channel.id);
+		client.channels.get(message.channel.id).send("Hi");
 	}
 	if (message.content.startsWith('!play')) {
 		const voiceChannel = message.member.voiceChannel;
