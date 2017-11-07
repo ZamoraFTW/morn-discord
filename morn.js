@@ -22,7 +22,7 @@ client.on('message', message => {
     	message.reply(lista);
 	}
 	if (message.content === '!esteCanal') {
-		message.reply(message.channel);
+		message.reply(message.channel.id);
   	}
 });
 
