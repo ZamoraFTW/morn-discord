@@ -22,14 +22,20 @@ client.on('message', message => {
 		if (!voiceChannel) return message.reply("Para poner un vídeo debes estar en un canal de voz");
 			voiceChannel.join()
 		  	.then(connnection => {
-			const stream = ytdl("https://www.youtube.com/watch?v=dQw4w9WgXcQ", { filter: 'audioonly' });
-			var url = ytdl(url, { filter: (format) => format.container === 'mp4' })
-			.pipe(fs.createWriteStream('video.mp4'));
+			const stream = ytdl('http://www.youtube.com/watch?v=A02s8omM_hI', {
+			})
+			.pipe(fs.createWriteStream('video.flv'));
 			const dispatcher = connnection.playStream(stream);
 			dispatcher.on('end', () => voiceChannel.leave());
 		  });
 	}
 });
+
+ytdl.getInfo(videoID, (err, info) => {
+	if (err) throw err;
+	var audioFormats = ytdl.filterFormats(info.formats, 'audioonly');
+	console.log('Formats with only audio: ' + audioFormats.length)
+  })
 
 // Proceso de login inicial del Bot, imprescindible para su funcionamiento AL FINAL DEL FICHERO
 client.login(process.env.BOT_TOKEN);
