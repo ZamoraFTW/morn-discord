@@ -23,9 +23,10 @@ client.on('message', message => {
 		console.log(videoUrl[1]);
 		const voiceChannel = message.member.voiceChannel;
 		if (!voiceChannel) {
-			return message.reply("Para poner un vídeo debes estar en un canal de voz");
+			return message.reply("Para poner una canción debes estar en un canal de voz");
 		} else {
 			message.reply("Reproduciendo " + videoUrl[1]);
+			message.delete();
 		}
 		voiceChannel.join()
 			.then(connnection => {
@@ -36,6 +37,15 @@ client.on('message', message => {
 				dispatcher.on('end', () => voiceChannel.leave());
 			});
 
+	}
+	if (message.content == '!stop') {
+		const voiceChannel = message.member.voiceChannel;
+		if (!voiceChannel) {
+			message.reply("¿Estás bien? ¿Quieres que hablemos?");
+		} else {
+			message.reply("Vale, adiós...");
+			voiceChannel.leave();
+		}
 	}
 });
 
