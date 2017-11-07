@@ -7,7 +7,8 @@ const request = require('request');
 const lista = "\nLista de comandos disponibles: \n\n" +
 	"!comandos : Devuelve la lista de comandos disponibles en el bot.\n" +
 	"!play [enlace]: Reproduce el sonido del video indicado en el [enlace], sin []. Función experimental, sujeta a fallos.\n" +
-	"!stop: Para el sonido del video que se está reproduciendo."
+	"!stop: Para el sonido del video que se está reproduciendo.\n" +
+	"!engramas: Devuelve la lista de poder actual de los distintos engramas e items que dan en el juego."
 
 
 // Canal de texto de administracion
