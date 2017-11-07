@@ -42,14 +42,12 @@ client.on('message', message => {
 		  });
 	}
 });
-var servidor = client.guilds;
-var array = Array.from(servidor.values());
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
-		bot.channels.find('id', txtAdministracion).sendMessage('Tweet detectado');
+		client.channels.find('id', txtAdministracion).sendMessage('Tweet detectado');
 	});
    
 	stream.on('error', function(error) {
-	  throw error;
+        throw error;
 	});
   });
