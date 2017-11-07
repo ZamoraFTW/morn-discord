@@ -26,9 +26,9 @@ client.on('message', message => {
   	}
 });
 var canalAdmin = client.channels.get(txtAdministracion);
+console.log(canalAdmin);
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
-	  console.log(event && event.text);
 	});
    
 	stream.on('error', function(error) {
