@@ -46,7 +46,8 @@ client.on('message', message => {
 
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
-		client.channels.get(txtAdministracion).send(event.text);
+		//client.channels.get(txtAdministracion).send(event.text);
+		console.log(event);
 	});
    
 	stream.on('error', function(error) {
