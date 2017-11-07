@@ -27,13 +27,20 @@ client.on('message', message => {
 	}
 	if (message.content === '!esteCanal') {
 		message.reply(message.guild.id);
-  	}
+	}
+	if (message.content.startsWith('!play')) {
+		const voiceChannel = message.member.voiceChannel;
+		if (!voiceChannel) return message.reply("Para poner un vídeo debes estar en un canal de voz");
+			voiceChannel.join()
+		  	.then(connnection => {
+			const stream = ytdl("https://www.youtube.com/watch?v=dQw4w9WgXcQ", { filter: 'audioonly' });
+			const dispatcher = connnection.playStream(stream);
+			dispatcher.on('end', () => voiceChannel.leave());
+		  });
+	}
 });
 var servidor = client.guilds;
 var array = Array.from(servidor.values());
-array.forEach(function(element) {
-    console.log(element);
-});
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
 	});
