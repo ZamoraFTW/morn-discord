@@ -123,9 +123,9 @@ client.on('message', message => {
 
 function verificado(numero) {
 	if (numero == 0) {
-		return "NO"
+		return "**NO**"
 	} else {
-		return "SI"
+		return "**SI**"
 	}
 }
 
@@ -135,9 +135,9 @@ function analizaEngrama(estado) {
 	} else if (estado == 1) {
 		return "**296-299.**"
 	} else if (estado == 2) {
-		return "Posible 300. "
+		return "**Posible 300.**"
 	} else if (estado == 3) {
-		return "300."
+		return "**300.**"
 	} else {
 		return "Se necesitan mas datos para analizar este drop."
 	}
