@@ -19,10 +19,7 @@ const idServer = process.env.ID_SERVER;
 
 client.on('message', message => {
 	if (message.content === '!comandos') {
-		message.reply(lista);
-	}
-	if (message.content === '!esteCanal') {
-		message.reply(message.channel.id);
+		message.channel.send(lista);
 	}
 	if (message.content.startsWith('!play')) {
 		let videoUrl = message.content.split(" ");
@@ -49,7 +46,7 @@ client.on('message', message => {
 	if (message.content == '!stop') {
 		const voiceChannel = message.member.voiceChannel;
 		if (!voiceChannel) {
-			message.reply("");
+			message.reply("ni siquiera estoy y ya me quieres echar :(");
 		} else {
 			message.reply("adiós...");
 			voiceChannel.leave();
