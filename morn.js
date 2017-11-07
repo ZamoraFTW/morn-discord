@@ -116,7 +116,7 @@ client.on('message', message => {
 			}, this);
 			misVendedores += "\n*Posible 300 quiere decir que aún no lo ha confirmado suficiente gente como para 'asegurar' que sea 300. Para que lo sea debe poner que está verificado.\n" +
 				"*Los datos de la página actualmente pertenecen a PS4 y Xbox One, aún no está confirmado que vayan acordes con los de PC." + "\nEstos datos cambian cada 30 minutos."
-			message.member.channel.send(misVendedores);
+			message.channel.send(misVendedores);
 		});
 	}
 });
