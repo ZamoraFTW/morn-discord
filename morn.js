@@ -19,8 +19,7 @@ var tw = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-// Proceso de login inicial del Bot, imprescindible para su funcionamiento
-client.login(process.env.BOT_TOKEN);
+
 	
 client.on('message', message => {
 	if (message.content === '!comandos') {
@@ -44,14 +43,16 @@ client.on('message', message => {
 	}
 });
 //client.channels.get(txtAdministracion).send('Hola');
-/*
+
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
-		
+		client.channels.get(txtAdministracion).send('Hola');
 	});
    
 	stream.on('error', function(error) {
         throw error;
 	});
 });
-*/
+
+// Proceso de login inicial del Bot, imprescindible para su funcionamiento
+client.login(process.env.BOT_TOKEN);
