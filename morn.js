@@ -23,10 +23,7 @@ client.on('message', message => {
 		if (!voiceChannel) return message.reply("Para poner un vídeo debes estar en un canal de voz");
 			voiceChannel.join()
 		  	.then(connnection => {
-			const stream = ytdl('http://www.youtube.com/watch?v=A02s8omM_hI',{
-				format: "audioonly"
-			})
-			.pipe(fs.createWriteStream('video.flv'));
+			const stream = ytdl("https://www.youtube.com/watch?v=dQw4w9WgXcQ", { filter: 'audioonly' });;
 			const dispatcher = connnection.playStream(stream);
 			dispatcher.on('end', () => voiceChannel.leave());
 		  });
