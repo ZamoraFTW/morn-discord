@@ -2,9 +2,14 @@ const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 const fs = require('fs');
 const client = new Discord.Client();
+const ajax = require('ajax-request');
 //Constante con la lista de comandos disponibles, modificar simpre que se añada o se borre un comando. Separarlos con \n
 const lista = "\nLista de comandos disponibles: \n\n" +
-	"!comandos : Devuelve la lista de comandos disponibles en el bot"
+	"!comandos : Devuelve la lista de comandos disponibles en el bot.\n" +
+	"!play [enlace]: Reproduce el sonido del video indicado en el [enlace], sin []. Función experimental, sujeta a fallos.\n" +
+	"!stop: Para el sonido del video que se está reproduciendo."
+
+
 // Canal de texto de administracion
 const txtAdministracion = process.env.ID_ADMINISTRACION;
 // ID del servidor
@@ -20,13 +25,12 @@ client.on('message', message => {
 	}
 	if (message.content.startsWith('!play')) {
 		let videoUrl = message.content.split(" ");
-		console.log(videoUrl[1]);
 		const voiceChannel = message.member.voiceChannel;
-		if (videoUrl[1] == undefined){
-			return message.reply("Play qué, atontao. Pon un enlace al menos.");
+		if (videoUrl[1] == undefined) {
+			return message.reply("play qué, atontao. Pon un enlace al menos.");
 		}
 		if (!voiceChannel) {
-			return message.reply("Para poner una canción debes estar en un canal de voz");
+			return message.reply("para poner una canción debes estar en un canal de voz");
 		} else {
 			message.reply("Reproduciendo " + videoUrl[1]);
 			message.delete();
@@ -49,6 +53,18 @@ client.on('message', message => {
 			message.reply("adiós...");
 			voiceChannel.leave();
 		}
+	}
+	if (message.content == '!engramas') {
+		request('url', function (err, res, body) {});
+		request({
+			url: 'https://api.vendorengrams.xyz/getVendorStats',
+			method: 'GET',
+			data: {
+				key: 'b93851b99ee05d18fbaa5380a0896217'
+			}
+		}, function (err, res, body) {
+
+		});
 	}
 });
 
