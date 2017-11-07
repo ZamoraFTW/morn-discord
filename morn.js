@@ -22,7 +22,7 @@ client.on('message', message => {
 		let videoUrl = message.content.split(" ");
 		console.log(videoUrl[1]);
 		const voiceChannel = message.member.voiceChannel;
-		if (videoUrl[1].trim() == ""){
+		if (videoUrl[1] == undefined){
 			return message.reply("Play qué, atontao. Pon un enlace al menos.");
 		}
 		if (!voiceChannel) {
