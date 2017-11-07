@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
+const fs = require('fs');
 const client = new Discord.Client();
 //Constante con la lista de comandos disponibles, modificar simpre que se añada o se borre un comando. Separarlos con \n
 const lista = "\nLista de comandos disponibles: \n\n" +
