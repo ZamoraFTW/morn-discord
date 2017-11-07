@@ -25,10 +25,10 @@ client.on('message', message => {
 		message.reply(message.channel.id);
   	}
 });
-
+var canalAdmin = client.channels.get(txtAdministracion);
 var stream = tw.stream('statuses/filter', {track: '@BungieHelp'});
 stream.on('data', function(event) {
-	client.send(txtAdministracion,event.text)
+	canalAdmin.send(txtAdministracion,event.text)
 	.then(message => console.log(`Mensaje enviado: ${message.content}`))
 	.catch(console.error);
 });
