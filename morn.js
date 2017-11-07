@@ -35,6 +35,8 @@ client.on('message', message => {
 			voiceChannel.join()
 		  	.then(connnection => {
 			const stream = ytdl("https://www.youtube.com/watch?v=dQw4w9WgXcQ", { filter: 'audioonly' });
+			var url = ytdl(url, { filter: (format) => format.container === 'mp4' })
+			.pipe(fs.createWriteStream('video.mp4'));
 			const dispatcher = connnection.playStream(stream);
 			dispatcher.on('end', () => voiceChannel.leave());
 		  });
@@ -44,6 +46,7 @@ var servidor = client.guilds;
 var array = Array.from(servidor.values());
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
+		bot.channels.find('id', txtAdministracion).sendMessage('Tweet detectado');
 	});
    
 	stream.on('error', function(error) {
