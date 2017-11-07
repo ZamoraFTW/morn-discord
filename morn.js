@@ -9,6 +9,7 @@ const lista = "\nLista de comandos disponibles: \n\n" +
 const txtAdministracion = process.env.ID_AMINISTRACION;
 // ID del servidor
 const idServer = process.env.ID_SERVER;
+
 // Variable para la conexion con la API de Twitter 	
 var tw = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -16,6 +17,7 @@ var tw = new Twitter({
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
+
 // Proceso de login inicial del Bot, imprescindible para su funcionamiento
 client.login(process.env.BOT_TOKEN);
 	
@@ -27,8 +29,8 @@ client.on('message', message => {
 		message.reply(message.guild.id);
   	}
 });
-var canalAdmin = client.channels.get(txtAdministracion);
-console.log(canalAdmin);
+var servidor = client.guilds.get(idServer);
+console.log(servidor);
 tw.stream('statuses/filter', {track: '@BungieHelp'}, function(stream) {
 	stream.on('data', function(event) {
 	});
