@@ -22,12 +22,9 @@ client.on('message', message => {
 	}
 	if (message.content === '!tweets') {
     	tw.get('search/tweets', {q: 'node.js'}, function(error, tweets, response) {
-			if (tweets == undefined) {
-				message.reply("No hay tweets");
-			} else {
-				console.log(tweets.text);
-			}
-			
+			tweets.forEach(function(element) {
+				console.log(element.text);
+			});
 		});
   	}
 });
