@@ -12,14 +12,22 @@ const lista = "\nLista de comandos disponibles: \n\n" +
 	"!engramas: Devuelve la lista de poder actual de los distintos engramas e items que dan en el juego."
 
 
-// Canal de texto de administracion
+// ID del canal de texto de administracion
 const txtAdministracion = process.env.ID_ADMINISTRACION;
 // ID del servidor
 const idServer = process.env.ID_SERVER;
+// Canal de texto #general
+const canalGeneral = client.guilds.get(idServer).defaultChannel;
 
 client.on('guildMemberAdd', miembro => {
-	client.guilds.get(idServer).defaultChannel.send("¡Tenemos un nuevo Guardián en el servidor!\n Bienvenido, " + miembro.username);
+	canalGeneral.send("¡Tenemos un nuevo Guardián en el servidor!\nBienvenido, " + miembro.user.username);
+	canalGeneral.send("Te he asignado el rol de Iniciado, ¡participa con el clan y serás ascendido!")
 	miembro.addRole("373020513276002306");
+})
+
+client.on('guildMemberRemove', miembro => {
+	canalGeneral.send("Parece que la Luz de " + miembro.user.username + " se ha agotado y ha dejado el servidor.");
+	canalGeneral.send("¡Él se lo pierde! Nadie le echará de menos :cry:.")
 })
 
 client.on('message', message => {
@@ -30,10 +38,10 @@ client.on('message', message => {
 		let videoUrl = message.content.split(" ");
 		const voiceChannel = message.member.voiceChannel;
 		if (videoUrl[1] == undefined) {
-			return message.reply("play qué, atontao. Pon un enlace al menos.");
+			return message.reply("pon un enlace al menos.");
 		}
 		if (!voiceChannel) {
-			return message.reply("para poner una canción debes estar en un canal de voz");
+			return message.reply("debes estar en un canal de voz");
 		} else {
 			message.reply("Reproduciendo " + videoUrl[1]);
 			message.delete();
