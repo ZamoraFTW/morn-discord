@@ -58,7 +58,8 @@ client.on('message', message => {
 		const detalles = message.content.split(" ");
 		const nombreEvento = detalles[1];
 		const horaEvento = detalles[2];
-		sql.get(`SELECT * FROM morn_raids WHERE nombre = "${nombreEvento}"`).then(row => {
+		console.log(`SELECT * FROM morn_raids WHERE nombre LIKE "${nombreEvento}"`);
+		sql.get(`SELECT * FROM morn_raids WHERE nombre LIKE "${nombreEvento}"`).then(row => {
 			message.reply("Ya existe una raid activa con ese nombre, usa !unirme [Nombre de la Raid] para unirte, sin [].");
 		}).catch(() => {
 			sql.run("CREATE TABLE IF NOT EXISTS morn_raids (nombre TEXT, miembro TEXT, creado TEXT)").then(() => {
@@ -74,7 +75,7 @@ client.on('message', message => {
 		});
 	}
 	if (message.content == ('!limpiarRaids')) {
-		sql.get(`Delete * FROM morn_raids`).then(row => {
+		sql.get(`delete from morn_raids`).then(row => {
 			message.channel.send("Raids limpiadas.");
 		}).catch(() => {
 			message.channel.send("No hay raids activas que limpiar.");
