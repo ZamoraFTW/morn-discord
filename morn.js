@@ -66,6 +66,26 @@ client.on('message', message => {
 			});
 		});
 	}
+	if (message.content.startsWith('!raids')) {
+		const detalles = message.content.split(" ");
+		const nombreEvento = detalles[1];
+		const horaEvento = detalles[2];
+		sql.get(`SELECT * FROM morn_raids`).then(row => {
+			console.log(row);
+		}).catch(() => {
+			message.channel.send("No hay raids activas en este momento.");
+		});
+	}
+	if (message.content.startsWith('!limpiarRaids')) {
+		const detalles = message.content.split(" ");
+		const nombreEvento = detalles[1];
+		const horaEvento = detalles[2];
+		sql.get(`Delete * FROM morn_raids`).then(row => {
+			message.channel.send("Raids limpiadas.");
+		}).catch(() => {
+			message.channel.send("No hay raids activas que limpiar.");
+		});
+	}
 	if (message.content == '!engramas') {
 		request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
 			var myArr = JSON.parse(body);
