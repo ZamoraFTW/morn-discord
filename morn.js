@@ -16,6 +16,7 @@ const txtAdministracion = process.env.ID_ADMINISTRACION;
 // ID del servidor
 const idServer = process.env.ID_SERVER;
 
+client.user.setPresence({ game: { name: 'Jodiendo la raid | !help', type: 0 } });
 
 client.on('message', message => {
 	if (message.content === '!comandos') {
@@ -143,4 +144,3 @@ function analizaEngrama(estado) {
 
 // Proceso de login inicial del Bot, imprescindible para su funcionamiento AL FINAL DEL FICHERO
 client.login(process.env.BOT_TOKEN);
-client.user.setPresence({ game: { name: 'Jodiendo la raid | !help', type: 0 } });
