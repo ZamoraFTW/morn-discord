@@ -28,7 +28,7 @@ client.on('message', message => {
 	if (message.content === '!roles') {
 		const roles = client.guilds.get(idServer).roles;
 		roles.forEach(function (element) {
-			console.log(element.name)
+			message.channel.send(element.name + " - " + element.id);
 		})
 	}
 	if (message.content.startsWith('!play')) {
