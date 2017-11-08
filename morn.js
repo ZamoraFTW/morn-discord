@@ -19,17 +19,12 @@ const idServer = process.env.ID_SERVER;
 
 client.on('guildMemberAdd', miembro => {
 	client.guilds.get(idServer).defaultChannel.send("¡Tenemos un nuevo Guardián en el servidor!\n Bienvenido, " + miembro.username);
+	miembro.addRole("373020513276002306");
 })
 
 client.on('message', message => {
 	if (message.content === '!comandos') {
 		message.channel.send(lista);
-	}
-	if (message.content === '!roles') {
-		const roles = client.guilds.get(idServer).roles;
-		roles.forEach(function (element) {
-			message.channel.send(element.name + " - " + element.id);
-		})
 	}
 	if (message.content.startsWith('!play')) {
 		let videoUrl = message.content.split(" ");
