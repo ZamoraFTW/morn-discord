@@ -66,20 +66,14 @@ client.on('message', message => {
 			});
 		});
 	}
-	if (message.content.startsWith('!raids')) {
-		const detalles = message.content.split(" ");
-		const nombreEvento = detalles[1];
-		const horaEvento = detalles[2];
+	if (message.content == ('!raids')) {
 		sql.get(`SELECT * FROM morn_raids`).then(row => {
 			console.log(row);
 		}).catch(() => {
 			message.channel.send("No hay raids activas en este momento.");
 		});
 	}
-	if (message.content.startsWith('!limpiarRaids')) {
-		const detalles = message.content.split(" ");
-		const nombreEvento = detalles[1];
-		const horaEvento = detalles[2];
+	if (message.content == ('!limpiarRaids')) {
 		sql.get(`Delete * FROM morn_raids`).then(row => {
 			message.channel.send("Raids limpiadas.");
 		}).catch(() => {
