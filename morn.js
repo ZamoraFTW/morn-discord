@@ -16,18 +16,17 @@ const lista = "\nLista de comandos disponibles: \n\n" +
 const txtAdministracion = process.env.ID_ADMINISTRACION;
 // ID del servidor
 const idServer = process.env.ID_SERVER;
-// Canal de texto #general
-const canalGeneral = client.guilds.get(idServer).defaultChannel;
+
 
 client.on('guildMemberAdd', miembro => {
-	canalGeneral.send("¡Tenemos un nuevo Guardián en el servidor!\nBienvenido, " + miembro.user.username);
-	canalGeneral.send("Te he asignado el rol de Iniciado, ¡participa con el clan y serás ascendido!")
+	client.guilds.get(idServer).defaultChannel.send("¡Tenemos un nuevo Guardián en el servidor!\nBienvenido, " + miembro.user.username);
+	client.guilds.get(idServer).defaultChannel.send("Te he asignado el rol de Iniciado, ¡participa con el clan y serás ascendido!")
 	miembro.addRole("373020513276002306");
 })
 
 client.on('guildMemberRemove', miembro => {
-	canalGeneral.send("Parece que la Luz de " + miembro.user.username + " se ha agotado y ha dejado el servidor.");
-	canalGeneral.send("¡Él se lo pierde! Nadie le echará de menos :cry:.")
+	client.guilds.get(idServer).defaultChannel.send("Parece que la Luz de " + miembro.user.username + " se ha agotado y ha dejado el servidor.");
+	client.guilds.get(idServer).defaultChannel.send("¡Él se lo pierde! Nadie le echará de menos :cry:.")
 })
 
 client.on('message', message => {
