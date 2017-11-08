@@ -120,9 +120,9 @@ client.on('message', message => {
 
 function verificado(numero) {
 	if (numero == 0) {
-		return "**NO**      :x: "
+		return " :x: "
 	} else {
-		return "**SI**      :white_check_mark: "
+		return " :white_check_mark: "
 	}
 }
 
