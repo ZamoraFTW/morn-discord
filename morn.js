@@ -122,7 +122,7 @@ function verificado(numero) {
 	if (numero == 0) {
 		return "**NO**"
 	} else {
-		return "**SI**"
+		return "**SI** :white_check_mark: "
 	}
 }
 
