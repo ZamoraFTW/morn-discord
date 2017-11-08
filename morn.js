@@ -26,7 +26,7 @@ client.on('message', message => {
 		message.channel.send(lista);
 	}
 	if (message.content === '!roles') {
-		message.channel.send(client.guilds.get(idServer).roles);		
+		console.log(client.guilds.get(idServer).roles);
 	}
 	if (message.content.startsWith('!play')) {
 		let videoUrl = message.content.split(" ");
