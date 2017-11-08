@@ -3,8 +3,6 @@ const ytdl = require('ytdl-core');
 const fs = require('fs');
 const client = new Discord.Client();
 const request = require('request');
-const sql = require("sqlite");
-sql.open("./morn.sqlite");
 
 //Constante con la lista de comandos disponibles, modificar simpre que se añada o se borre un comando. Separarlos con \n
 const lista = "\nLista de comandos disponibles: \n\n" +
@@ -19,9 +17,16 @@ const txtAdministracion = process.env.ID_ADMINISTRACION;
 // ID del servidor
 const idServer = process.env.ID_SERVER;
 
+client.on('guildMemberAdd', miembro => {
+	client.guilds.get(idServer).defaultChannel.send("¡Tenemos un nuevo Guardián en el servidor!\n Bienvenido, " + miembro.username);
+})
+
 client.on('message', message => {
 	if (message.content === '!comandos') {
 		message.channel.send(lista);
+	}
+	if (message.content === '!roles') {
+		message.channel.send(client.guilds.get(idServer).roles);		
 	}
 	if (message.content.startsWith('!play')) {
 		let videoUrl = message.content.split(" ");
@@ -53,36 +58,6 @@ client.on('message', message => {
 			message.reply("adiós...");
 			voiceChannel.leave();
 		}
-	}
-	if (message.content.startsWith('!crearRaid')) {
-		const detalles = message.content.split(" ");
-		const nombreEvento = detalles[1];
-		const horaEvento = detalles[2];
-		sql.get(`SELECT * FROM morn_raids WHERE nombre LIKE "${nombreEvento}"`).then(row => {
-			if (row != undefined) {
-				message.reply("Ya existe una raid activa con ese nombre, usa !unirme [Nombre de la Raid] para unirte, sin [].");				
-			} else {
-				sql.run("INSERT INTO morn_raids (nombre, miembro) VALUES (?, ?)", [nombreEvento, message.author.username]);				
-			}
-		}).catch(() => {
-			sql.run("CREATE TABLE IF NOT EXISTS morn_raids (nombre TEXT, miembro TEXT, creado TEXT)").then(() => {
-				sql.run("INSERT INTO morn_raids (nombre, miembro) VALUES (?, ?)", [nombreEvento, message.author.username]);
-			});
-		});
-	}
-	if (message.content == ('!raids')) {
-		sql.each(`SELECT * FROM morn_raids`).then(row => {
-			console.log(row);
-		}).catch(() => {
-			message.channel.send("No hay raids activas en este momento.");
-		});
-	}
-	if (message.content == ('!limpiarRaids')) {
-		sql.get(`delete from morn_raids`).then(row => {
-			message.channel.send("Raids limpiadas.");
-		}).catch(() => {
-			message.channel.send("No hay raids activas que limpiar.");
-		});
 	}
 	if (message.content == '!engramas') {
 		request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
