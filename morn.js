@@ -71,7 +71,7 @@ client.on('message', message => {
 		});
 	}
 	if (message.content == ('!raids')) {
-		sql.get(`SELECT * FROM morn_raids`).then(row => {
+		sql.each(`SELECT * FROM morn_raids`).then(row => {
 			console.log(row);
 		}).catch(() => {
 			message.channel.send("No hay raids activas en este momento.");
