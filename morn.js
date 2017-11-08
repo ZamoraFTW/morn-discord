@@ -3,6 +3,9 @@ const ytdl = require('ytdl-core');
 const fs = require('fs');
 const client = new Discord.Client();
 const request = require('request');
+const sql = require("sqlite");
+sql.open("./morn.sqlite");
+
 //Constante con la lista de comandos disponibles, modificar simpre que se añada o se borre un comando. Separarlos con \n
 const lista = "\nLista de comandos disponibles: \n\n" +
 	"!comandos : Devuelve la lista de comandos disponibles en el bot.\n" +
@@ -51,6 +54,18 @@ client.on('message', message => {
 			voiceChannel.leave();
 		}
 	}
+	if (message.content.startsWith('!crearRaid')) {
+		const detalles = message.content.split(" ");
+		const nombreEvento = detalles[1];
+		const horaEvento = detalles[2];
+		sql.get(`SELECT * FROM morn_raids WHERE nombre = "${nombreEvento}"`).then(row => {
+			message.reply("Ya existe una raid activa con ese nombre, usa !unirme [Nombre de la Raid] para unirte, sin [].");
+		}).catch(() => {
+			sql.run("CREATE TABLE IF NOT EXISTS morn_raids (nombre TEXT, miembro TEXT, creado TEXT)").then(() => {
+				sql.run("INSERT INTO morn_raids (nombre, miembro) VALUES (?, ?)", [nombreEvento, message.author.username]);
+			});
+		});
+	}
 	if (message.content == '!engramas') {
 		request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
 			var myArr = JSON.parse(body);
@@ -60,9 +75,9 @@ client.on('message', message => {
 				switch (element.vendor) {
 					case 0:
 						if (element.type == 3 && element.verified == 1) {
-							misVendedores += ":bangbang:  Devrim Kay   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";							
+							misVendedores += ":bangbang:  Devrim Kay   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						} else {
-							misVendedores += "Devrim Kay   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";							
+							misVendedores += "Devrim Kay   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						}
 						break;
 					case 1:
@@ -106,7 +121,7 @@ client.on('message', message => {
 						} else {
 							misVendedores += "Drang   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						}
-						
+
 						break;
 					case 8:
 						if (element.type == 3 && element.verified == 1) {
@@ -114,7 +129,7 @@ client.on('message', message => {
 						} else {
 							misVendedores += "Zavala   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						}
-						
+
 						break;
 					case 9:
 						if (element.type == 3 && element.verified == 1) {
@@ -122,7 +137,7 @@ client.on('message', message => {
 						} else {
 							misVendedores += "Shaxx   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						}
-						
+
 						break;
 					case 10:
 						if (element.type == 3 && element.verified == 1) {
@@ -130,7 +145,7 @@ client.on('message', message => {
 						} else {
 							misVendedores += "Banshee-44   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						}
-						
+
 						break;
 					case 11:
 						if (element.type == 3 && element.verified == 1) {
@@ -138,7 +153,7 @@ client.on('message', message => {
 						} else {
 							misVendedores += "Ikora   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						}
-						
+
 						break;
 					case 12:
 						if (element.type == 3 && element.verified == 1) {
@@ -146,7 +161,7 @@ client.on('message', message => {
 						} else {
 							misVendedores += "Benedicto 99-40   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						}
-						
+
 						break;
 					case 13:
 						if (element.type == 3 && element.verified == 1) {
@@ -154,15 +169,15 @@ client.on('message', message => {
 						} else {
 							misVendedores += "Guerra Futura   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						}
-						
+
 						break;
 					case 14:
 						if (element.type == 3 && element.verified == 1) {
 							misVendedores += ":bangbang: Nueva Monarquía   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						} else {
-							misVendedores += "Nueva Monarquía   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";							
+							misVendedores += "Nueva Monarquía   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
 						}
-						
+
 						break;
 					case 15:
 						if (element.type == 3 && element.verified == 1) {
