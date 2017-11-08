@@ -59,8 +59,11 @@ client.on('message', message => {
 		const nombreEvento = detalles[1];
 		const horaEvento = detalles[2];
 		sql.get(`SELECT * FROM morn_raids WHERE nombre LIKE "${nombreEvento}"`).then(row => {
-			console.log(row);
-			message.reply("Ya existe una raid activa con ese nombre, usa !unirme [Nombre de la Raid] para unirte, sin [].");
+			if (row != undefined) {
+				message.reply("Ya existe una raid activa con ese nombre, usa !unirme [Nombre de la Raid] para unirte, sin [].");				
+			} else {
+				sql.run("INSERT INTO morn_raids (nombre, miembro) VALUES (?, ?)", [nombreEvento, message.author.username]);				
+			}
 		}).catch(() => {
 			sql.run("CREATE TABLE IF NOT EXISTS morn_raids (nombre TEXT, miembro TEXT, creado TEXT)").then(() => {
 				sql.run("INSERT INTO morn_raids (nombre, miembro) VALUES (?, ?)", [nombreEvento, message.author.username]);
