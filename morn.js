@@ -59,55 +59,131 @@ client.on('message', message => {
 			myArr.forEach(function (element) {
 				switch (element.vendor) {
 					case 0:
-						misVendedores += "Devrim Kay   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang:  Devrim Kay   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";							
+						} else {
+							misVendedores += "Devrim Kay   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";							
+						}
 						break;
 					case 1:
-						misVendedores += "Miniherramienta MIDA   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang:  Miniherramienta MIDA   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Miniherramienta MIDA   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
 						break;
 					case 2:
-						misVendedores += "Sloane   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang:  Sloane   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Sloane   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
 						break;
 					case 3:
-						misVendedores += "Failsafe   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang:  Failsafe   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Failsafe   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
 						break;
 					case 4:
-						misVendedores += "Asher Mir   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang:  Asher Mir   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Asher Mir   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
 						break;
 					case 5:
-						misVendedores += "Man 'O War   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang:  Man 'O War   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Man 'O War   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
 						break;
 					case 7:
-						misVendedores += "Drang   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang:  Drang   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Drang   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
+						
 						break;
 					case 8:
-						misVendedores += "Zavala   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang: Zavala   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Zavala   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
+						
 						break;
 					case 9:
-						misVendedores += "Shaxx   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang: Shaxx   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Shaxx   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
+						
 						break;
 					case 10:
-						misVendedores += "Banshee-44   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang: Banshee-44   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Banshee-44   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
+						
 						break;
 					case 11:
-						misVendedores += "Ikora   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang: Ikora   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Ikora   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
+						
 						break;
 					case 12:
-						misVendedores += "Benedicto 99-40   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang: Benedicto 99-40   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Benedicto 99-40   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
+						
 						break;
 					case 13:
-						misVendedores += "Guerra Futura   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang: Guerra Futura   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Guerra Futura   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
+						
 						break;
 					case 14:
-						misVendedores += "Nueva Monarquía   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang: Nueva Monarquía   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Nueva Monarquía   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";							
+						}
+						
 						break;
 					case 15:
-						misVendedores += "Órbita Muerta   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang: Órbita Muerta   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Órbita Muerta   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
 						break;
 					case 16:
-						misVendedores += "Los Nueve   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang: Los Nueve   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Los Nueve   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
 						break;
 					case 17:
-						misVendedores += "Saladino   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						if (analizaEngrama(element.type == 3) && verificado(element.verified) == 1) {
+							misVendedores += ":bangbang: Saladino   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						} else {
+							misVendedores += "Saladino   ---   " + analizaEngrama(element.type) + "   ---  Verificado: " + verificado(element.verified) + "\n";
+						}
 						break;
 				}
 			}, this);
@@ -120,9 +196,9 @@ client.on('message', message => {
 
 function verificado(numero) {
 	if (numero == 0) {
-		return " :x: "
+		return "**NO**"
 	} else {
-		return " :white_check_mark: "
+		return "**SI**"
 	}
 }
 
