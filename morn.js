@@ -141,6 +141,4 @@ function analizaEngrama(estado) {
 }
 
 // Proceso de login inicial del Bot, imprescindible para su funcionamiento AL FINAL DEL FICHERO
-client.login(process.env.BOT_TOKEN, function (done){
-	client.user.setPresence({ game: { name: 'Jodiendo la raid | !help', type: 0 } });	
-});
+client.login(process.env.BOT_TOKEN)
