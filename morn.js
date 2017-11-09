@@ -16,7 +16,7 @@ const lista = "\nLista de comandos disponibles: \n\n" +
 const txtAdministracion = process.env.ID_ADMINISTRACION;
 // ID del servidor
 const idServer = process.env.ID_SERVER;
-
+let bala = false;
 
 client.on('guildMemberAdd', miembro => {
 	client.guilds.get(idServer).defaultChannel.send("¡Tenemos un nuevo Guardián en el servidor!\nBienvenido, " + miembro.user.username);
@@ -32,6 +32,22 @@ client.on('guildMemberRemove', miembro => {
 client.on('message', message => {
 	if (message.content === '!comandos') {
 		message.channel.send(lista);
+	}
+	if (message.content === '!recarga') {
+		if (bala) {
+			message.channel.send("Ya hay una bala cargada, dispara si te atreves con !dispara.");
+		} else {
+			message.channel.send("Bala cargada, aprieta el gatillo con !disparar.");		
+			bala = true;	
+		}
+	}
+	if (message.content === '!dispara') {
+		if (bala) {
+			//En proceso
+			bala = false;
+		} else {
+			message.channel.send("Recarga primero usando !recarga, luego dispara.");		
+		}
 	}
 	if (message.content.startsWith('!play')) {
 		let videoUrl = message.content.split(" ");
@@ -66,6 +82,7 @@ client.on('message', message => {
 	}
 	if (message.content == '!engramas') {
 		request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
+			console.log(message.author.username + " solicita información de los engramas");
 			if (error != undefined) {
 				message.channel.send("Error en los datos recibidos, prueba de nuevo en 5-10 segundos.");
 			}
