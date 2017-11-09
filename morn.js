@@ -9,7 +9,9 @@ const lista = "\nLista de comandos disponibles: \n\n" +
 	"!comandos : Devuelve la lista de comandos disponibles en el bot.\n" +
 	"!play [enlace]: Reproduce el sonido del video indicado en el [enlace], sin []. Función experimental, sujeta a fallos.\n" +
 	"!stop: Para el sonido del video que se está reproduciendo.\n" +
-	"!engramas: Devuelve la lista de poder actual de los distintos engramas e items que dan en el juego."
+	"!engramas: Devuelve la lista de poder actual de los distintos engramas e items que dan en el juego.\n" +
+	"!recarga: Pone una bala en el cargador.\n" + 
+	"!dispara: Dispara la bala previamente recargada."
 
 
 // ID del canal de texto de administracion
@@ -37,7 +39,7 @@ client.on('message', message => {
 		if (bala) {
 			message.channel.send("Ya hay una bala cargada, dispara si te atreves con !dispara.");
 		} else {
-			message.channel.send("Bala cargada, aprieta el gatillo con !disparar.");		
+			message.channel.send("Bala cargada, aprieta el gatillo con !dispara.");		
 			bala = true;	
 		}
 	}
@@ -48,10 +50,9 @@ client.on('message', message => {
 			if (numRandom > 50){
 				message.channel.send("Estás muerto :dizzy_face: :skull:");
 				} else {
-				message.channel.send("Te salvase... :rage: ");
+				message.channel.send("Te salvaste... :rage: ");
 			}
 			bala = false;	
-			message.channel.send("¿Alguien más? Tengo balas de sobra para todos :smiling_imp:");
 		} else {
 			message.channel.send("Recarga primero usando !recarga, luego dispara.");		
 		}
