@@ -44,7 +44,14 @@ client.on('message', message => {
 	if (message.content === '!dispara') {
 		if (bala) {
 			//En proceso
-			bala = false;
+			let numRandom = parseInt(Math.random() * 100) + 1;
+			if (numRandom > 50){
+				message.channel.send("Estás muerto :dizzy_face: :skull:");
+				} else {
+				message.channel.send("Te salvase... :rage: ");
+			}
+			bala = false;	
+			message.channel.send("¿Alguien más? Tengo balas de sobra para todos :smiling_imp:");
 		} else {
 			message.channel.send("Recarga primero usando !recarga, luego dispara.");		
 		}
