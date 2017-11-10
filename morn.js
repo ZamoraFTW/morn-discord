@@ -36,16 +36,18 @@ client.on('ready', () => {
 	})
 })
 
+// **Negrita**
+
 // Nuevo miembro entra al servidor.
 client.on('guildMemberAdd', miembro => {
-	client.guilds.get(idServer).defaultChannel.send("¡Tenemos un nuevo Guardián en el servidor!\nBienvenido, " + miembro.user.username);
+	client.guilds.get(idServer).defaultChannel.send("¡Tenemos un nuevo Guardián en el servidor!\nBienvenido, **" + miembro.user.username  + "**");
 	client.guilds.get(idServer).defaultChannel.send("Te he asignado el rol de Iniciado, ¡participa con el clan y serás ascendido!")
 	miembro.addRole(rolIniciado);
 })
 
 // Miembro deja el servidor
 client.on('guildMemberRemove', miembro => {
-	client.guilds.get(idServer).defaultChannel.send("Parece que la Luz de " + miembro.user.username + " se ha agotado y ha dejado el servidor.");
+	client.guilds.get(idServer).defaultChannel.send("Parece que la Luz de **" + miembro.user.username + "** se ha agotado y ha dejado el servidor.");
 	client.guilds.get(idServer).defaultChannel.send("¡Él se lo pierde! Nadie le echará de menos :cry:.")
 })
 
