@@ -3,9 +3,7 @@ const ytdl = require('ytdl-core');
 const fs = require('fs');
 const request = require('request');
 const destiny = require('destiny2');
-
 const client = new Discord.Client();
-const clientDestiny = new destiny();
 
 //Constante con la lista de comandos disponibles, modificar simpre que se añada o se borre un comando. Separarlos con \n
 const lista = "\nLista de comandos disponibles: \n\n" +
@@ -261,7 +259,7 @@ client.on('message', message => {
 		if (message.content.startsWith("!perfil")) {
 			const mensaje = message.content.split(" ");
 			const usuario = mensaje[1];
-			clientDestiny.getProfile(usuario, '4')
+			destiny.getProfile(usuario, '4')
 				.then(data => message.reply("datos de tu perfil:\n" + data));
 		}
 	}
