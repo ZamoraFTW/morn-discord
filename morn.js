@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 const fs = require('fs');
 const request = require('request');
-const Destiny = require('destiny2');
+const { Destiny } = require('destiny2');
 
 const client = new Discord.Client();
 const clientDestiny = new Destiny();
@@ -261,7 +261,7 @@ client.on('message', message => {
 		if (message.content.startsWith("!perfil")) {
 			const mensaje = message.content.split(" ");
 			const usuario = mensaje[1];
-			clientDestiny.getProfile(usuario, '1')
+			clientDestiny.getProfile(usuario, '4')
 				.then(data => message.reply("datos de tu perfil:\n" + data));
 		}
 	}
