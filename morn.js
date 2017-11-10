@@ -260,8 +260,9 @@ client.on('message', message => {
 		if (message.content.startsWith("!perfil")) {
 			const mensaje = message.content.split(" ");
 			const usuario = mensaje[1];
+			message.channel.send("Solicitando la información de perfil de " + usuario)
 			destiny.getProfile(usuario, '4')
-				.then(data => message.reply("datos de tu perfil:\n" + data));
+				.then(data => console.log(data));
 		}
 	}
 });
