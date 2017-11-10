@@ -1,8 +1,11 @@
 const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 const fs = require('fs');
-const client = new Discord.Client();
 const request = require('request');
+const desiny = require('destiny2');
+
+const client = new Discord.Client();
+const destiny = new Client();
 
 //Constante con la lista de comandos disponibles, modificar simpre que se añada o se borre un comando. Separarlos con \n
 const lista = "\nLista de comandos disponibles: \n\n" +
@@ -40,7 +43,7 @@ client.on('ready', () => {
 
 // Nuevo miembro entra al servidor.
 client.on('guildMemberAdd', miembro => {
-	client.guilds.get(idServer).defaultChannel.send("¡Tenemos un nuevo Guardián en el servidor!\nBienvenido, **" + miembro.user.username  + "**");
+	client.guilds.get(idServer).defaultChannel.send("¡Tenemos un nuevo Guardián en el servidor!\nBienvenido, **" + miembro.user.username + "**");
 	client.guilds.get(idServer).defaultChannel.send("Te he asignado el rol de Iniciado, ¡participa con el clan y serás ascendido!")
 	miembro.addRole(rolIniciado);
 })
@@ -254,6 +257,12 @@ client.on('message', message => {
 					"*Podéis visitar la página https://vendorengrams.xyz/ y votar en función de lo que os haya salido a vosotros, para dar mas certeza a los datos." + "\n\nEstos datos cambian cada 30 minutos."
 				message.channel.send(misVendedores);
 			});
+		}
+		if (message.content.startsWith("!perfil")) {
+			const mensaje = message.content.split(" ");
+			const usuario = mensaje[1];
+			client.getProfile(usuario, '1')
+				.then(data => message.reply("datos de tu perfil:\n" + data));
 		}
 	}
 });
