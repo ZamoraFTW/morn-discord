@@ -2,9 +2,7 @@ const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 const fs = require('fs');
 const request = require('request');
-const { Client } = require('destiny2');
 const client = new Discord.Client();
-const destiny = new Client(process.env.API_BUNGIE);
 
 //Constante con la lista de comandos disponibles, modificar simpre que se añada o se borre un comando. Separarlos con \n
 const lista = "\nLista de comandos disponibles: \n\n" +
@@ -256,13 +254,6 @@ client.on('message', message => {
 					"*Podéis visitar la página https://vendorengrams.xyz/ y votar en función de lo que os haya salido a vosotros, para dar mas certeza a los datos." + "\n\nEstos datos cambian cada 30 minutos."
 				message.channel.send(misVendedores);
 			});
-		}
-		if (message.content.startsWith("!perfil")) {
-			const mensaje = message.content.split(" ");
-			const usuario = mensaje[1];
-			message.channel.send("Solicitando la información de perfil de " + usuario)
-			destiny.getProfile(usuario, '4')
-				.then(data => console.log(data));
 		}
 	}
 });
