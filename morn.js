@@ -21,9 +21,11 @@ const idServer = process.env.ID_SERVER;
 const rolIniciado = process.env.ROL_INICIADO;
 let bala = false;
 
+// Usar client.setTimeout (mirar docs) para funciones que se produzcan tras un delay
 
 // Funciones justo despues de que el bot esté disponible e instanciado
 client.on('ready', () => {
+	// Establece el 'Jugando a' del bot en Discord
 	client.user.setPresence({
 		status: "online",
 		game: {
@@ -49,7 +51,7 @@ client.on('guildMemberRemove', miembro => {
 
 // Cuando detecta un mensaje en el cliente
 client.on('message', message => {
-	if (message.startsWith("!")) {
+	if (message.content.startsWith("!")) {
 		if (message.content === '!comandos') {
 			message.channel.send(lista);
 		}
