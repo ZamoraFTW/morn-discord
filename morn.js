@@ -14,11 +14,11 @@ const lista = "\nLista de comandos disponibles: \n\n" +
 	"!dispara: Dispara la bala previamente recargada."
 
 
-// ID del canal de texto de administracion
+// Constantes accesibles desde Heroku
 const txtAdministracion = process.env.ID_ADMINISTRACION;
-// ID del servidor
 const idServer = process.env.ID_SERVER;
 const rolIniciado = process.env.ROL_INICIADO;
+const urlEngramas = process.env.URL_ENGRAMAS;
 let bala = false;
 
 // Usar client.setTimeout (mirar docs) para funciones que se produzcan tras un delay
@@ -111,7 +111,7 @@ client.on('message', message => {
 			}
 		}
 		if (message.content == '!engramas') {
-			request('https://api.vendorengrams.xyz/getVendorDrops?key=b93851b99ee05d18fbaa5380a0896217', function (error, response, body) {
+			request(urlEngramas, function (error, response, body) {
 				console.log(message.author.username + " solicita información de los engramas");
 				if (error != undefined) {
 					message.channel.send("Error en los datos recibidos, prueba de nuevo en 5-10 segundos.");
