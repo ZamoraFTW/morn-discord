@@ -27,7 +27,7 @@ client.on('ready', () => {
 	client.user.setPresence({
 		status: "online",
 		game: {
-			name: "De paseo con Calus | !help",
+			name: "!comandos",
 			streaming: false,
 			type: 1,
 		}
