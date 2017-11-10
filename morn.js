@@ -2,8 +2,9 @@ const Discord = require('discord.js');
 const ytdl = require('ytdl-core');
 const fs = require('fs');
 const request = require('request');
-const destiny = require('destiny2');
+const { Client } = require('destiny2');
 const client = new Discord.Client();
+const destiny = new Client(process.env.API_BUNGIE);
 
 //Constante con la lista de comandos disponibles, modificar simpre que se añada o se borre un comando. Separarlos con \n
 const lista = "\nLista de comandos disponibles: \n\n" +
