@@ -23,11 +23,13 @@ let bala = false;
 
 
 // Funciones justo despues de que el bot esté disponible e instanciado
-client.on('ready', miembro => {
+client.on('ready', () => {
 	client.user.setPresence({
 		status: "online",
 		game: {
-			name: "De paseo con Calus | !help"
+			name: "De paseo con Calus | !help",
+			streaming: false,
+			type: 1,
 		}
 	})
 })
