@@ -61,11 +61,11 @@ client.on('message', message => {
 	}
 
 	//Interacción perros
-	if ((message.content.toUpperCase().indexOf("putos perro") > -1) && (message.author.id !== "375567137114423297") ){
+	if ((message.content.toUpperCase().indexOf("PUTOS PERRO") > -1) && (message.author.id !== "375567137114423297") ){
 		message.channel.send("Puto perro tu madre, <@" + message.author.id + "> :rage:");
 	}
 
-	else if ((message.content.toUpperCase().indexOf(" perro") > -1) && (message.author.id !== "375567137114423297") ){
+	else if ((message.content.toUpperCase().indexOf(" PERRO") > -1) && (message.author.id !== "375567137114423297") ){
 		message.channel.send("¡Oh! ¿Vais a hacer perros? Bien, os echo de menos :upside_down:.");
 	}
 
