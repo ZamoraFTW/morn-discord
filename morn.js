@@ -54,8 +54,19 @@ client.on('guildMemberRemove', miembro => {
 // Cuando detecta un mensaje en el cliente
 client.on('message', message => {
 
+	
+	//Corregir enagramas.
 	if ((message.content.toUpperCase().indexOf("ENAGRAMA") > -1) && (message.author.id !== "375567137114423297") ){
-		message.channel.send("Se dice \"engrama\", no \"enagrama\", <@" + message.author.id + ">");
+		message.channel.send("Se dice \"engrama\", no \"enagrama\", <@" + message.author.id + ">. A ver si aprendemos a leer. :upside_down:");
+	}
+
+	//Interacción perros
+	if ((message.content.toUpperCase().indexOf("putos perro") > -1) && (message.author.id !== "375567137114423297") ){
+		message.channel.send("Puto perro tu madre, <@" + message.author.id + "> :rage:");
+	}
+
+	else if ((message.content.toUpperCase().indexOf(" perro") > -1) && (message.author.id !== "375567137114423297") ){
+		message.channel.send("¡Oh! ¿Vais a hacer perros? Bien, os echo de menos :upside_down:.");
 	}
 
 	if (message.content.startsWith("!")) {
