@@ -54,7 +54,7 @@ client.on('guildMemberRemove', miembro => {
 // Cuando detecta un mensaje en el cliente
 client.on('message', message => {
 
-	if ((message.content.toUpperCase.indexOf("ENAGRAMA") > -1) && (message.author.id !== "375567137114423297") ){
+	if ((message.content.toUpperCase().indexOf("ENAGRAMA") > -1) && (message.author.id !== "375567137114423297") ){
 		message.channel.send("Se dice \"engrama\", no \"enagrama\", <@" + message.author.id + ">");
 	}
 
