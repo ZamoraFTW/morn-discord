@@ -130,7 +130,15 @@ client.on('message', message => {
 			const numero = Number(partesMensaje[1])
 			const hora = partesMensaje[2]
 			const fecha = partesMensaje[3]
-			const fechaHora = "Día " + fecha + " a las " + hora + "."
+			if (hora && fecha){
+				const fechaHora = "Día " + fecha + " a las " + hora + "."				
+			} else if (fecha){
+				const fechaHora = "Día " + fecha + "."
+			} else if (hora) {
+				const fechaHora = "A las " + hora + " de hoy."
+			} else {
+				const fechaHora = "No establecida."				
+			}
 			if (numero) {
 				if (existePlan(numero, 6)) {
 					message.channel.send('Ya existe una raid con ese ID, usa otro.')
