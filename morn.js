@@ -185,7 +185,7 @@ client.on('message', message => {
 						mensaje += 'Plazas: ' + arrPlanes[i].lista.length + '/' + arrPlanes[i].maxMembers + '\n';
 						mensaje += 'ID de plan: ' + arrPlanes[i].id + '\n';
 						mensaje += 'Creado: ' + arrPlanes[i].dameHora() + '\n';
-						mensaje += 'Lista de miembros apuntados:';
+						mensaje += 'Lista de miembros apuntados: \n';
 						mensaje += arrPlanes[i].dameListaEnVariable(message.channel);
 					} else {
 						iAux += 1;
@@ -455,7 +455,7 @@ function existePlan(num, tipo) {
 }
 
 // Elimina una raid
-function borraPlanSinMiembros(num, tipo, interesado) {
+function borraPlan(num, tipo, interesado) {
 	for (var i = 0; i < arrPlanes.length; i++) {
 		if ((arrPlanes[i].id === num) && (arrPlanes[i].maxMembers === tipo)) {
 			if (arrPlanes[i].author == interesado) {
@@ -468,7 +468,7 @@ function borraPlanSinMiembros(num, tipo, interesado) {
 	}
 }
 
-function borraPlan(num, tipo) {
+function borraPlanSinMiembros(num, tipo) {
 	for (var i = 0; i < arrPlanes.length; i++) {
 		if ((arrPlanes[i].id === num) && (arrPlanes[i].maxMembers === tipo)) {
 			arrPlanes.splice(i, 1)
