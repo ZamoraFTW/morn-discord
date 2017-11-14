@@ -139,7 +139,24 @@ client.on('message', message => {
 				message.channel.send('Apuntados hasta ahora: ')
 				raid.dameLista(message.channel)
 			} else {
-				message.channel.send('Asegúrate de asignar un número identificativo a la raid. Ejemplo: !creaRaid 76')				
+				message.channel.send('Asegúrate de asignar un número identificativo a la raid. Ejemplo: !creaRaid 76')
+			}
+		}
+		if (message.content.startsWith("!joinRaid")) {
+			const partesMensaje = message.content.split(" ");
+			const numero = Number(partesMensaje[1]);
+			if (existePlan(numero, 6)) {
+				var auxPlan = damePlan(numero, 6)
+				if (!repetido(auxPlan, message.author)) {
+					auxPlan.lista.push(message.author)
+					message.channel.send('<@' + message.author.id + '> se ha unido a la raid ' + numero.toString())
+					message.channel.send('Lista de miembros apuntados:')
+					auxPlan.dameLista(message.channel)
+				} else {
+					message.reply('Ya estás apuntado, pesao.')
+				}
+			} else {
+				message.channel.send('No existe ese plan :|. Comprueba los planes con "!listaraids"')
 			}
 		}
 		if (message.content == '!engramas') {
