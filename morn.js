@@ -180,17 +180,13 @@ client.on('message', message => {
 				let iAux = 0;
 				let mensaje = "";
 				for (var i = 0; i < arrPlanes.length; i++) {
-					if (iAux == i) {
-						mensaje += 'Tipo de plan: **' + tipoPlan(arrPlanes[i].maxMembers) + '**\n';
-						mensaje += 'Plazas: ' + arrPlanes[i].lista.length + '/' + arrPlanes[i].maxMembers + '\n';
-						mensaje += 'ID de plan: ' + arrPlanes[i].id + '\n';
-						mensaje += 'Creado: ' + arrPlanes[i].dameHora() + '\n';
-						mensaje += 'Lista de miembros apuntados: \n';
-						mensaje += arrPlanes[i].dameListaEnVariable(message.channel);
-					} else {
-						iAux += 1;
-						message.channel.send(mensaje)
-					}
+					mensaje += 'Tipo de plan: **' + tipoPlan(arrPlanes[i].maxMembers) + '**\n';
+					mensaje += 'Plazas: ' + arrPlanes[i].lista.length + '/' + arrPlanes[i].maxMembers + '\n';
+					mensaje += 'ID de plan: ' + arrPlanes[i].id + '\n';
+					mensaje += 'Creado: ' + arrPlanes[i].dameHora() + '\n';
+					mensaje += 'Lista de miembros apuntados: \n';
+					mensaje += arrPlanes[i].dameListaEnVariable(message.channel);
+					message.channel.send(mensaje)
 				}
 			}
 		}
