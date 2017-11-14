@@ -153,7 +153,7 @@ client.on('message', message => {
 					message.channel.send('Lista de miembros apuntados:')
 					auxPlan.dameLista(message.channel)
 				} else {
-					message.reply('Ya estás apuntado, pesao.')
+					message.channel.send('Ya estás apuntado, no seas pesao.')
 				}
 			} else {
 				message.channel.send('No existe ese plan :|. Comprueba los planes con "!listaraids"')
