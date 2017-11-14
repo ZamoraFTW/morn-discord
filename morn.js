@@ -172,7 +172,7 @@ client.on('message', message => {
 				message.channel.send('No borrar algo que no existe, o sí, quien sabe.')
 			}
 		}
-		if (mensaje.content == "!listaRaids") {
+		if (message.content == "!listaRaids") {
 			if (arrPlanes.length === 0) {
 				message.channel.send('Aún no se ha creado ninguna raid. Crea una con "!creaRaid {Identificador}"')
 			} else {
