@@ -128,13 +128,16 @@ client.on('message', message => {
 		if (message.content.startsWith("!creaRaid")) {
 			const partesMensaje = message.content.split(" ")
 			const numero = Number(partesMensaje[1])
+			const hora = partesMensaje[2]
+			const fecha = partesMensaje[3]
+			const fechaHora = hora + " " + fecha
 			if (numero) {
 				if (existePlan(numero, 6)) {
 					message.channel.send('Ya existe una raid con ese ID, usa otro.')
 					return
 				}
 				message.channel.send('El usuario <@' + message.author.id + '> va a iniciar una raid')
-				var raid = new Plan(numero, 6, message)
+				var raid = new Plan(numero, 6, message, fechaHora)
 				arrPlanes.push(raid)
 				message.channel.send('Apuntados hasta ahora: ')
 				raid.dameLista(message.channel)
@@ -148,7 +151,7 @@ client.on('message', message => {
 			if (existePlan(numero, 6)) {
 				var auxPlan = damePlan(numero, 6)
 				if (auxPlan.lista.length == 6) {
-					message.channel.send('La Raid ya está completa, puedes crear una con !creaRaid {identificador}')					
+					message.channel.send('La Raid ya está completa, puedes crear una con !creaRaid {identificador}')
 				} else {
 					if (!repetido(auxPlan, message.author)) {
 						auxPlan.lista.push(message.author)
@@ -186,6 +189,7 @@ client.on('message', message => {
 				for (var i = 0; i < arrPlanes.length; i++) {
 					mensaje += 'Tipo de plan: **' + tipoPlan(arrPlanes[i].maxMembers) + '**\n';
 					mensaje += 'Plazas: ' + arrPlanes[i].lista.length + '/' + arrPlanes[i].maxMembers + '\n';
+					mensaje += 'Fecha de comienzo: ' + arrPlanes[i].fecha + '\n'
 					mensaje += 'ID de plan: ' + arrPlanes[i].id + '\n';
 					mensaje += 'Creado: ' + arrPlanes[i].dameHora() + '\n';
 					mensaje += 'Lista de miembros apuntados: \n';
@@ -383,11 +387,12 @@ function analizaEngrama(estado) {
 	}
 }
 
-function Plan(id, maxMembers, message) {
+function Plan(id, maxMembers, message, fecha) {
 	this.id = id
 	this.maxMembers = maxMembers
 	this.message = message
 	this.autor = message.author
+	this.fecha = fecha
 	this.lista = [message.author]
 	this.hora = new Date()
 	this.hora.setHours(this.hora.getHours() + 1)
