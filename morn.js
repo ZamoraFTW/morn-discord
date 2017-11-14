@@ -11,12 +11,12 @@ const lista = "\nLista de comandos disponibles: \n\n" +
 	"**!stop**: Para el sonido del video que se está reproduciendo.\n" +
 	"**!engramas**: Devuelve la lista de poder actual de los distintos engramas e items que dan en el juego.\n" +
 	"**!recarga**: Pone una bala en el cargador.\n" +
-	"**!dispara**: Dispara la bala previamente recargada.\n" + 
-	"**!creaRaid [id] [hora] [fecha]**: Crea un evento de raid para que los demás se apunten. La fecha y la hora pueden estar vacías, el ID es imprescindible.\n"+
+	"**!dispara**: Dispara la bala previamente recargada.\n" +
+	"**!creaRaid [id] [hora] [fecha]**: Crea un evento de raid para que los demás se apunten. La fecha y la hora pueden estar vacías, el ID es imprescindible.\n" +
 	"**!joinRaid [id]**: El miembro que lo use se unirá a la raid especificada, siempre y cuando haya hueco, exista y no esté ya en ella.\n" +
-	"**!listaRaids**: Lista todas las raids actuales.\n" + 
-	"**!sacarRaid [id]**: Saca al miembro que lo escribe de la raid indicada, siempre y cuando esté apuntado. Si se queda vacía se borrará.\n" + 
-	"**!borraRaid [id]**: Borra la raid indicada, solo lo puede hacer el creador de la misma." 
+	"**!listaRaids**: Lista todas las raids actuales.\n" +
+	"**!sacarRaid [id]**: Saca al miembro que lo escribe de la raid indicada, siempre y cuando esté apuntado. Si se queda vacía se borrará.\n" +
+	"**!borraRaid [id]**: Borra la raid indicada, solo lo puede hacer el creador de la misma."
 
 
 // Constantes accesibles desde Heroku
@@ -135,19 +135,21 @@ client.on('message', message => {
 			const numero = Number(partesMensaje[1])
 			let hora = partesMensaje[2]
 			let fecha = partesMensaje[3]
-			if (hora.indexOf("/")){
-				fecha = hora;
-				hora = undefined;
+			if (hora) {
+				if (hora.indexOf("/")) {
+					fecha = hora;
+					hora = undefined;
+				}
 			}
 			let fechaHora;
-			if (hora && fecha){
-				fechaHora = "Día " + fecha + " a las " + hora + "."				
-			} else if (fecha){
+			if (hora && fecha) {
+				fechaHora = "Día " + fecha + " a las " + hora + "."
+			} else if (fecha) {
 				fechaHora = "Día " + fecha + "."
 			} else if (hora) {
 				fechaHora = "A las " + hora + " de hoy."
 			} else {
-				fechaHora = "No establecida."				
+				fechaHora = "No establecida."
 			}
 			if (numero) {
 				if (existePlan(numero, 6)) {
@@ -212,7 +214,7 @@ client.on('message', message => {
 					mensaje += 'Lista de miembros apuntados: \n';
 					mensaje += arrPlanes[i].dameListaEnVariable(message.channel) + '\n\n';
 				}
-				message.channel.send(mensaje)				
+				message.channel.send(mensaje)
 			}
 		}
 		if (message.content.startsWith("!salirRaid")) {
