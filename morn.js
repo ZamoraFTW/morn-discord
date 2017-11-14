@@ -126,6 +126,18 @@ client.on('message', message => {
 				voiceChannel.leave();
 			}
 		}
+		if (message.content.startsWith("!creaRaid")) {
+			numero = Number(mensaje.substring(mensaje.length - 2))
+			if (existePlan(numero, 6)) {
+			  message.channel.send('Ya existe una raid con ese ID, usa otro.')
+			  return
+			}
+			message.channel.send('El usuario <@' + message.author.id + '> va a iniciar una raid')
+			var raid = new Plan(numero, 6, message)
+			arrPlanes.push(raid)
+			message.channel.send('Apuntados hasta ahora: ')
+			raid.dameLista(message.channel)
+		  }
 		if (message.content == '!engramas') {
 			request(urlEngramas, function (error, response, body) {
 				console.log(message.author.username + " solicita información de los engramas");
@@ -295,6 +307,93 @@ function analizaEngrama(estado) {
 		return "**Se necesitan mas datos para analizar este drop.**"
 	}
 }
+
+function Plan (id, maxMembers, message) {
+	this.id = id
+	this.maxMembers = maxMembers
+	this.message = message
+	this.autor = message.author
+	this.lista = [message.author]
+	this.hora = new Date()
+	this.hora.setHours(this.hora.getHours() + 1)
+  }
+  
+  
+  Plan.prototype.dameLista = function (canal) {
+	var strOut = ''
+	for (var i = 0; i < this.lista.length; i++) {
+	  strOut = strOut.concat('<@' + this.lista[i].id + '>')
+	  if (i + 1 < this.lista.length) {
+		strOut = strOut.concat(', ')
+	  }
+	}
+	// Sacado fuera del for para que solo envíe el mensaje al final
+	canal.send(strOut)	
+  }
+  
+  Plan.prototype.dameHora = function () {
+	var strOut = this.hora.getHours() + ':'
+	if (this.hora.getMinutes < 10) {
+	  strOut = strOut.concat('0')
+	}
+	strOut = strOut.concat(this.hora.getMinutes())
+	return strOut
+  }
+
+  function sacar (plan, jugador) {
+	for (var i = 0; i < plan.lista.length; i++) {
+	  if (jugador.id === plan.lista[i].id) {
+		plan.lista.splice(i, 1)
+	  }
+	}
+  }
+  
+  // Comprueba si el jugador existe en el plan
+  function repetido (plan, jugador) {
+	for (var i = 0; i < plan.lista.length; i++) {
+	  if (jugador.id === plan.lista[i].id) {
+		return true
+	  }
+	}
+	return false
+  }
+  
+  // Confirma si ya existe esa raid.
+  function existePlan (num, tipo) {
+	for (var i = 0; i < arrPlanes.length; i++) {
+	  if ((arrPlanes[i].id === num) && (arrPlanes[i].maxMembers === tipo)) return true
+	}
+	return false
+  }
+  
+  // Elimina una raid
+  function borraPlan (num, tipo) {
+	for (var i = 0; i < arrPlanes.length; i++) {
+	  if ((arrPlanes[i].id === num) && (arrPlanes[i].maxMembers === tipo)) {
+		arrPlanes.splice(i, 1)
+	  }
+	}
+  }
+  
+  function damePlan (num, tipo) {
+	for (var i = 0; i < arrPlanes.length; i++) {
+	  if ((arrPlanes[i].id === num) && (arrPlanes[i].maxMembers === tipo)) {
+		return arrPlanes[i]
+	  }
+	}
+  }
+  
+  // Traduce el tipo de plan según los miembros
+  function tipoPlan (num) {
+	switch (num) {
+	  case 3:
+		return 'Ocaso'
+	  case 4:
+		return 'PvP'
+	  case 6:
+		return 'Raid'
+	}
+  }
 
 // Proceso de login inicial del Bot, imprescindible para su funcionamiento AL FINAL DEL FICHERO
 client.login(process.env.BOT_TOKEN)
