@@ -128,8 +128,8 @@ client.on('message', message => {
 		if (message.content.startsWith("!creaRaid")) {
 			const partesMensaje = message.content.split(" ")
 			const numero = Number(partesMensaje[1])
-			const hora = partesMensaje[2]
-			const fecha = partesMensaje[3]
+			let hora = partesMensaje[2]
+			let fecha = partesMensaje[3]
 			if (hora.indexOf("/")){
 				fecha = hora;
 				hora = undefined;
