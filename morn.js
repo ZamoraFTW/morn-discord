@@ -147,13 +147,17 @@ client.on('message', message => {
 			const numero = Number(partesMensaje[1]);
 			if (existePlan(numero, 6)) {
 				var auxPlan = damePlan(numero, 6)
-				if (!repetido(auxPlan, message.author)) {
-					auxPlan.lista.push(message.author)
-					message.channel.send('<@' + message.author.id + '> se ha unido a la raid ' + numero.toString())
-					message.channel.send('Lista de miembros apuntados:')
-					auxPlan.dameLista(message.channel)
+				if (auxPlan.lista.length == 6) {
+					message.channel.send('La Raid ya está completa, puedes crear una con !creaRaid {identificador}')					
 				} else {
-					message.channel.send('Ya estás apuntado, no seas pesao.')
+					if (!repetido(auxPlan, message.author)) {
+						auxPlan.lista.push(message.author)
+						message.channel.send('<@' + message.author.id + '> se ha unido a la raid ' + numero.toString())
+						message.channel.send('Lista de miembros apuntados:')
+						auxPlan.dameLista(message.channel)
+					} else {
+						message.channel.send('Ya estás apuntado, no seas pesao.')
+					}
 				}
 			} else {
 				message.channel.send('No existe ese plan :|. Comprueba los planes con "!listaraids"')
