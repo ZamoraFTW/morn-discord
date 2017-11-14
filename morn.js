@@ -453,6 +453,7 @@ function existePlan(num, tipo) {
 function borraPlan(num, tipo, interesado) {
 	for (var i = 0; i < arrPlanes.length; i++) {
 		if ((arrPlanes[i].id === num) && (arrPlanes[i].maxMembers === tipo)) {
+			console.log(arrPlanes[i].author + " \\\\\///// " + interesado)
 			if (arrPlanes[i].author == interesado) {
 				arrPlanes.splice(i, 1)
 				return true;
