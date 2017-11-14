@@ -20,6 +20,7 @@ const idServer = process.env.ID_SERVER;
 const rolIniciado = process.env.ROL_INICIADO;
 const urlEngramas = process.env.URL_ENGRAMAS;
 let bala = false;
+let arrPlanes = []
 
 // Usar client.setTimeout (mirar docs) para funciones que se produzcan tras un delay
 
