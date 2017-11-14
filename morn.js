@@ -130,6 +130,10 @@ client.on('message', message => {
 			const numero = Number(partesMensaje[1])
 			const hora = partesMensaje[2]
 			const fecha = partesMensaje[3]
+			if (hora.indexOf("/")){
+				fecha = hora;
+				hora = undefined;
+			}
 			let fechaHora;
 			if (hora && fecha){
 				fechaHora = "Día " + fecha + " a las " + hora + "."				
