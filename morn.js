@@ -11,7 +11,12 @@ const lista = "\nLista de comandos disponibles: \n\n" +
 	"!stop: Para el sonido del video que se está reproduciendo.\n" +
 	"!engramas: Devuelve la lista de poder actual de los distintos engramas e items que dan en el juego.\n" +
 	"!recarga: Pone una bala en el cargador.\n" +
-	"!dispara: Dispara la bala previamente recargada."
+	"!dispara: Dispara la bala previamente recargada.\n" + 
+	"!creaRaid [id] [hora] [fecha]: Crea un evento de raid para que los demás se apunten. La fecha y la hora pueden estar vacías, el ID es imprescindible.\n"+
+	"!joinRaid [id]: El miembro que lo use se unirá a la raid especificada, siempre y cuando haya hueco, exista y no esté ya en ella.\n" +
+	"!listaRaids: Lista todas las raids actuales.\n" + 
+	"!sacarRaid [id]: Saca al miembro que lo escribe de la raid indicada, siempre y cuando esté apuntado. Si se queda vacía se borrará.\n" + 
+	"!borraRaid [id]: Borra la raid indicada, solo lo puede hacer el creador de la misma." 
 
 
 // Constantes accesibles desde Heroku
