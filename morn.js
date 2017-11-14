@@ -187,15 +187,14 @@ client.on('message', message => {
 				let iAux = 0;
 				let mensaje = "";
 				for (var i = 0; i < arrPlanes.length; i++) {
-					mensaje += 'Tipo de plan: **' + tipoPlan(arrPlanes[i].maxMembers) + '**\n';
+					mensaje += '**RAID ' + arrPlanes[i].id + '**\n';
 					mensaje += 'Plazas: ' + arrPlanes[i].lista.length + '/' + arrPlanes[i].maxMembers + '\n';
 					mensaje += 'Fecha de comienzo: ' + arrPlanes[i].fecha + '\n'
-					mensaje += 'ID de plan: ' + arrPlanes[i].id + '\n';
 					mensaje += 'Creado: ' + arrPlanes[i].dameHora() + '\n';
 					mensaje += 'Lista de miembros apuntados: \n';
-					mensaje += arrPlanes[i].dameListaEnVariable(message.channel);
-					message.channel.send(mensaje)
+					mensaje += arrPlanes[i].dameListaEnVariable(message.channel) + '\n\n';
 				}
+				message.channel.send(mensaje)				
 			}
 		}
 		if (message.content.startsWith("!salirRaid")) {
