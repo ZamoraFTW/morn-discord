@@ -376,7 +376,7 @@ client.on('message', message => {
 							break;
 					}
 				}, this);
-				misVendedores += "*Podéis visitar la página https://vendorengrams.xyz/ y votar en función de lo que os haya salido a vosotros, para dar mas certeza a los datos." + "\n\nEstos datos cambian cada 30 minutos."
+				misVendedores += "\n*Podéis visitar la página https://vendorengrams.xyz/ y votar en función de lo que os haya salido a vosotros, para dar mas certeza a los datos." + "\n\nEstos datos cambian cada 30 minutos."
 				message.channel.send(misVendedores);
 			});
 		}
