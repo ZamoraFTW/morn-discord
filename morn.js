@@ -243,8 +243,8 @@ client.on('message', message => {
 					message.channel.send("Error en los datos recibidos, prueba de nuevo en 5-10 segundos.");
 				}
 				var myArr = JSON.parse(body);
-				var misVendedores = "Lista de poder de luz de los distintos drops que hay en el juego.\nRecordad que no son datos 100% fiables y si no están verificados menos aún." +
-					" Todos los drops son valorados por cuentas de 305 de luz.\n\n"
+				var misVendedores = "Poder de luz de los distintos drops que hay en el juego.\nRecordad que no son datos 100% fiables." +
+					" Los drops son valorados por cuentas 305.\n\n"
 				myArr.forEach(function (element) {
 					switch (element.vendor) {
 						case 0:
@@ -376,8 +376,7 @@ client.on('message', message => {
 							break;
 					}
 				}, this);
-				misVendedores += "\n*Posible 300 quiere decir que aún no lo ha confirmado suficiente gente como para 'asegurar' que sea 300. Para que lo sea debe poner que está verificado.\n" +
-					"*Podéis visitar la página https://vendorengrams.xyz/ y votar en función de lo que os haya salido a vosotros, para dar mas certeza a los datos." + "\n\nEstos datos cambian cada 30 minutos."
+				misVendedores += "*Podéis visitar la página https://vendorengrams.xyz/ y votar en función de lo que os haya salido a vosotros, para dar mas certeza a los datos." + "\n\nEstos datos cambian cada 30 minutos."
 				message.channel.send(misVendedores);
 			});
 		}
@@ -402,7 +401,7 @@ function analizaEngrama(estado) {
 	} else if (estado == 3) {
 		return "**300.**"
 	} else {
-		return "**Se necesitan mas datos para analizar este drop.**"
+		return "**Se necesitan mas datos.**"
 	}
 }
 
